@@ -13,7 +13,7 @@ export default function createProject(name) {
     },
 
     getTodos() {
-        return[...todos]
+        return JSON.parse(JSON.stringify(todos)); // Deep copy
     }
   }
 }
