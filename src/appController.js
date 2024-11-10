@@ -1,9 +1,16 @@
 import createProject from "./createProject"
+import createTodo from "./createTodo";
 
 
 const appController = (()=> {
 
-    let projectsList = []
+    let projectsList = [];
+
+    let defaultProject = createProject("Home1");
+        defaultProject.addTodo({title: 'cleaning kitchen'}); 
+        defaultProject.addTodo({title: 'buy bread'}); 
+        defaultProject.addTodo({title: 'change sheets'}); 
+         projectsList.push(defaultProject);
 
     function addProjectToList(name, createProject) {
         if (!name) {
@@ -23,8 +30,16 @@ const appController = (()=> {
     }
     
    function getProjectsList() {
-        return JSON.parse(JSON.stringify(projectsList))
-    }
+    return projectsList.map(project => {
+        return {
+            name: project.name,
+            addTodo: project.addTodo,
+            removeTodo: project.removeTodo,
+            getTodos: project.getTodos,
+            todos: project.getTodos() // Include todos directly for easier access
+        };
+    });
+   }
 
     function addTodoToProject(todo, nameProject) {
        
