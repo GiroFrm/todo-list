@@ -7,73 +7,61 @@
 </head>
 <body>
     <aside class="sidebar">
-        <a href=""><p class="add-task">Add task</p></a>
+      
         <div>
-            <p class="project">Project</p>
-            <a href=""><p>Home</p></a>
-            <a href=""><p>Work</p></a>
+            <p class="project">Projects</p>
+            <div class="projects-container">
+            <p>Home</p>
+            <p>Work</p>
+            </div>
             <button class="project-btn">Add Project</button>
-             <div>
-                <form action="">
-                <input type="text" required>
-                 <button type="submit">Add</button>
-                 <button type="button">Cancel</button>
-                </form>
-               
 
+             <div class="formAddProject" style="display: none">
+                <form id="projectForm">
+                <input id="projectNameInput" type="text" required>
+                 <button type="submit">Add</button>
+                 <button type="button" id="cancelButton">Cancel</button>
+                </form>
              </div>
         
         </div>
     </aside>
-    <div class="project-section">
+    <div>
         <h1>Project title</h1>
+        <button class="btn-addtask">Add Task</button>
 
-        <div class="todo-container"> 
-            <div class="todo-header">
-            <label class="container"><p>Todo1</p>
-                <input type="checkbox" checked="checked">
-                <span class="checkmark"></span>
-              </label>
-           
+        <div class="formAddTodo" style="display: none">
+            <form class="addTaskform">
+                <!-- Input for Title -->
+                <input type="text"  name="title" placeholder="Task Name"  required>
+                <textarea name="description" rows="4" placeholder="Description"></textarea>
+                 <div>
+                <select id="projectSelect" name="project">
+                    <option value="Home1">Home1</option>
+                    <option value="Work">Work</option>
+                    <!-- Add more options as needed -->
+                </select>
+                <button type="submit">Add</button>
+                <button type="button" id="cancelButtonTodo">Cancel</button>
             </div>
-            <a href=""><p>edit</p></a>
-            <a href=""><p class="todo-delete">delete</p></a>
-        </div>
-        <div class="todo-container"> 
-            <div class="todo-header">
-            <label class="container"><p>Todo1</p>
-                <input type="checkbox" checked="checked">
-                <span class="checkmark"></span>
-              </label>
-            
-            </div>
-            <a href=""><p>edit</p></a>
-            <a href=""><p class="todo-delete">delete</p></a>
-        </div>
-        <div class="todo-container"> 
-            <div class="todo-header">
-            <label class="container"><p>Todo1</p>
-                <input type="checkbox" checked="checked">
-                <span class="checkmark"></span>
-              </label>
-           
-            </div>
-            <a href=""><p>edit</p></a>
-            <a href=""><p class="todo-delete">delete</p></a>
+            </form>
         </div>
 
+    <div class="project-section" >
         <div class="todo-container"> 
             <div class="todo-header">
-            <label class="container"><p class="todo">Todo1</p>
+            <label class="container">
+                <p>Todo1</p>
                 <input type="checkbox" checked="checked">
                 <span class="checkmark"></span>
               </label>
-             
             </div>
-            <a href=""><p>edit</p></a>
-            <a href=""><p class="todo-delete">delete</p></a>
+            <p>edit</p>
+            <p class="todo-delete">delete</p>
         </div>
+
     </div>
-    
+
+</div>
 </body>
 </html>
