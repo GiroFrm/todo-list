@@ -33,20 +33,25 @@ export const containerAddProject = document.querySelector('.formAddProject');
         renderProjects();
     }
 
-  export   function renderProjects() {
+  export function renderProjects() {
         const projectsContainer =  document.querySelector('.projects-container');
         projectsContainer.innerHTML= ''
         const listAllProjects = appController.getProjectsList();
           listAllProjects.forEach(element => {
             const newProject = document.createElement('p');
+                 newProject.classList.add('project1');
                  newProject.innerHTML = element.name;
+               
                  projectsContainer.appendChild(newProject);
     });
 
   }
 
-  export function renderTodos() {
-      const project = appController.getProjectsList().find(project=> project.name === 'Home1');
+  export function renderTodos(projectName='Home1') {
+    document.querySelector('.project-section').innerHTML = ' ';
+
+      const project = appController.getProjectsList().find(project=> project.name === projectName);
+       
          project.getTodos().forEach(todo=>{
             console.log(todo);
             const todoContainer = document.createElement('div');
@@ -69,39 +74,21 @@ export const containerAddProject = document.querySelector('.formAddProject');
             const edit = document.createElement('p');
             edit.innerHTML='edit';
             const cancel = document.createElement('p');
-            cancel.innerHTML = 'cancel';
+            cancel.innerHTML = 'delete';
             cancel.classList.add('todo-delete');
             todoContainer.appendChild(edit);
             todoContainer.appendChild(cancel);
-            
+
             document.querySelector('.project-section').appendChild(todoContainer);
             
+            // Add event listener delete button 
+            
+            cancel.addEventListener('click', ()=>{
+                console.log('cancel btn');
+                project.removeTodo(todo);
+                renderTodos(project.name)
+            })
          })
-  }
-    //  show todos linked to a project.
-    /*
-     * 1. find project byname in the projectList
-     * 2. loop through all project todos
-     * 
-     * 3. create a new DOM element Div
-     * 
-     * 4. asign DOM Element div Todo properties
-     * 5. Attach DOM Div Todo to container TOdos.
-     * 
-     *  <div class="todo-container"> 
-            <div class="todo-header">
-            <label class="container">
-                <p>Todo1</p>
-                <input type="checkbox" checked="checked">
-                <span class="checkmark"></span>
-              </label>
-            </div>
-            <p>edit</p>
-            <p class="todo-delete">delete</p>
-        </div>
-     */ 
+    }
 
-    // add new Todo
-
-    // assign todo to a different project.
-
+  
