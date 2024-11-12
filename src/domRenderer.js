@@ -76,6 +76,8 @@ export const containerAddProject = document.querySelector('.formAddProject');
             const cancel = document.createElement('p');
             cancel.innerHTML = 'delete';
             cancel.classList.add('todo-delete');
+            edit.style.cursor="pointer"
+            cancel.style.cursor="pointer";
             todoContainer.appendChild(edit);
             todoContainer.appendChild(cancel);
 
@@ -87,6 +89,10 @@ export const containerAddProject = document.querySelector('.formAddProject');
                 console.log('cancel btn');
                 project.removeTodo(todo);
                 renderTodos(project.name)
+            })
+
+            edit.addEventListener("click", ()=> {
+                console.log('Edit button');
             })
          })
     }
