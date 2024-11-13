@@ -93,6 +93,14 @@ export const containerAddProject = document.querySelector('.formAddProject');
 
             edit.addEventListener("click", ()=> {
                 console.log('Edit button');
+                // open window add Task with all the related infos.
+                const newTaskForm =  document.querySelector('.formAddTodo');
+                newTaskForm.style.display="block";
+                 document.getElementById('titleInput').value = todo.title;
+                 document.getElementById('descriptionInput').value = todo.description;
+                 document.getElementById('projectSelect').value = project.name; 
+
+
             })
          })
     }
