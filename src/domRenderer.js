@@ -99,9 +99,10 @@ export const containerAddProject = document.querySelector('.formAddProject');
                 formEditTask.style.display="block";
                 document.getElementById('titleInputEdit').value = todo.title;
                 document.getElementById('descriptionInputEdit').value = todo.description;
-                document.getElementById('projectSelect').value = project.name; 
-                  
-                setUpEditForm(todo.title);
+                document.getElementById('projectSelectEdit').value = 'webdevelopment'; 
+                document.getElementById('projectSelectEdit').selected = true;
+
+                setUpEditForm(todo.title, project.name);
              
             })
          })
