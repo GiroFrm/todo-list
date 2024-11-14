@@ -1,3 +1,4 @@
+import createTodo from "./createTodo";
 
 export default function createProject(name) {
   let todos =[]
@@ -5,7 +6,7 @@ export default function createProject(name) {
     name,
     addTodo(todo) {
         if(todos.find(element=> element.title === todo.title )) return 
-        todos.push(todo)
+        todos.push(todo);
     },
     removeTodo(todo){
         todos = todos.filter(element => element.title !== todo.title);
@@ -13,7 +14,7 @@ export default function createProject(name) {
     },
 
     getTodos() {
-        return JSON.parse(JSON.stringify(todos)); // Deep copy
+        return  [...todos]; 
     }
   }
 }
