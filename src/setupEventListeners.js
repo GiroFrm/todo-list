@@ -70,7 +70,7 @@ cancelBtnTaskFrom.addEventListener('click', ()=>{
 
  }
 
- export function setUpEditForm(todoName) {
+ export function setUpEditForm(todoName, projectName) {
     document.querySelector('#editFormTodo').style.display="block";
 
     const formEditTask = document.querySelector('#editTaskform');
@@ -78,10 +78,15 @@ cancelBtnTaskFrom.addEventListener('click', ()=>{
 
     const newFormEditTask = formEditTask.cloneNode(true); 
     formEditTask.parentNode.replaceChild(newFormEditTask, formEditTask);
+
      const cancelButton = document.querySelector('#cancelButtonTodoEdit');
       cancelButton.addEventListener('click', ()=>{
         newFormEditTask.style.display="none";
      })
+     const projectSelect = document.getElementById('projectSelectEdit'); 
+               
+     projectSelect.value = projectName;
+
     newFormEditTask.addEventListener("submit", (event)=>{
         event.preventDefault(); 
         
@@ -92,14 +97,13 @@ cancelBtnTaskFrom.addEventListener('click', ()=>{
         // const dueDate = event.target.dueDate.value;
          
         const projectsExists = appController.getProjectsList();
-        const projectElement = projectsExists.find(el => el.name === 'Home1');
+        const projectElement = projectsExists.find(el => el.name === project);
         const todoElement =  projectElement.getTodos().find(todo => todo.title === todoName);
  
-        todoElement.editTodo(title);       
+       todoElement.editTodo(title);       
         newFormEditTask.style.display='none';
         event.target.title= '';
-
-        renderTodos();
+        renderTodos(project);
 
        
       
