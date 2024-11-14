@@ -1,5 +1,6 @@
 
 import appController from "./appController";
+import { setUpEditForm } from "./setupEventListeners";
 
 export const containerAddProject = document.querySelector('.formAddProject');
              
@@ -23,10 +24,10 @@ export const containerAddProject = document.querySelector('.formAddProject');
 
     document.getElementById('cancelButton').onclick = function() {
         document.getElementById('projectNameInput').value = ''; // Clear the input field
-        document.querySelector('.formAddProject').style.display = 'none'; // Hide the form
+        document.querySelector('.formAddTodo').style.display = 'none'; // Hide the form
     };
 
-
+  
     function createNewProject(name) {
         appController.addNewProject(name);
         // updateProjectsList
@@ -48,12 +49,13 @@ export const containerAddProject = document.querySelector('.formAddProject');
   }
 
   export function renderTodos(projectName='Home1') {
+
     document.querySelector('.project-section').innerHTML = ' ';
 
       const project = appController.getProjectsList().find(project=> project.name === projectName);
        
          project.getTodos().forEach(todo=>{
-            console.log(todo);
+          
             const todoContainer = document.createElement('div');
             todoContainer.classList.add('todo-container');
             const todoHeader = document.createElement('div');
@@ -83,24 +85,24 @@ export const containerAddProject = document.querySelector('.formAddProject');
 
             document.querySelector('.project-section').appendChild(todoContainer);
             
-            // Add event listener delete button 
-            
             cancel.addEventListener('click', ()=>{
-                console.log('cancel btn');
                 project.removeTodo(todo);
                 renderTodos(project.name)
             })
 
             edit.addEventListener("click", ()=> {
-                console.log('Edit button');
-                // open window add Task with all the related infos.
-                const newTaskForm =  document.querySelector('.formAddTodo');
-                newTaskForm.style.display="block";
-                 document.getElementById('titleInput').value = todo.title;
-                 document.getElementById('descriptionInput').value = todo.description;
-                 document.getElementById('projectSelect').value = project.name; 
+                
+                document.querySelector('#editFormTodo').style.display="block";
 
-
+                const formEditTask = document.querySelector('#editTaskform');
+          
+                formEditTask.style.display="block";
+                document.getElementById('titleInputEdit').value = todo.title;
+                document.getElementById('descriptionInputEdit').value = todo.description;
+                document.getElementById('projectSelect').value = project.name; 
+                  
+                setUpEditForm(todo.title);
+             
             })
          })
     }
