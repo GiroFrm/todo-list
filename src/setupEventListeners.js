@@ -1,6 +1,6 @@
 import appController from "./appController";
 import createTodo from "./createTodo";
-import { renderProjects, renderTodos } from "./domRenderer";
+import { renderProjects, renderTodos, renderSelectProjects,  renderSelectEditProjects } from "./domRenderer";
 
 
 export function setupTodosProject(){
@@ -19,7 +19,8 @@ function handleProjectClick(event) {
     const projectName = projectElement.textContent;
     if(projectName) {
     renderTodos(projectName);
-    console.log(projectName);
+    document.querySelector('.projectSectionTitle').innerHTML= projectName;
+    console.log(projectName)
     }else {
         console.error("Project name not found.");
     }
@@ -30,10 +31,9 @@ const newTaskForm =  document.querySelector('.formAddTodo'); //html template
 const cancelBtnTaskFrom = document.querySelector('#cancelButtonTodo');
 
 document.querySelector('.btn-addtask').addEventListener("click",()=>{
-
     newTaskForm.style.display='block';
-  // document.querySelector('.addTaskform').reset()
- console.log("Add Task")
+    renderSelectProjects();
+ 
 })
 
 cancelBtnTaskFrom.addEventListener('click', ()=>{
@@ -60,47 +60,42 @@ cancelBtnTaskFrom.addEventListener('click', ()=>{
              const todo = createTodo(title, description);
              appController.addTodoToProject(todo, project);
          
-        renderTodos(); 
+        renderTodos(project); 
         
         newTaskForm.style.display='none';
         event.target.title= '';
       
        })
-      
-
  }
 
  export function setUpEditForm(todoName, projectName) {
     document.querySelector('#editFormTodo').style.display="block";
-
+    renderSelectEditProjects() 
     const formEditTask = document.querySelector('#editTaskform');
-
-
     const newFormEditTask = formEditTask.cloneNode(true); 
-    formEditTask.parentNode.replaceChild(newFormEditTask, formEditTask);
+        formEditTask.parentNode.replaceChild(newFormEditTask, formEditTask);
 
      const cancelButton = document.querySelector('#cancelButtonTodoEdit');
-      cancelButton.addEventListener('click', ()=>{
+        cancelButton.addEventListener('click', ()=>{
         newFormEditTask.style.display="none";
      })
-     const projectSelect = document.getElementById('projectSelectEdit'); 
-               
-     projectSelect.value = projectName;
+     const projectSelect = document.getElementById('projectSelectEdit');      
+         projectSelect.value = projectName;
 
-    newFormEditTask.addEventListener("submit", (event)=>{
-        event.preventDefault(); 
+        newFormEditTask.addEventListener("submit", (event)=>{
+            event.preventDefault(); 
         
-        const title = event.target.title.value;
-        const project = event.target.project.value;
-        const description = event.target.description.value;
+            const title = event.target.title.value;
+            const project = event.target.project.value;
+            const description = event.target.description.value;
         // const priority = event.target.priority.value;
         // const dueDate = event.target.dueDate.value;
          
-        const projectsExists = appController.getProjectsList();
-        const projectElement = projectsExists.find(el => el.name === project);
-        const todoElement =  projectElement.getTodos().find(todo => todo.title === todoName);
+            const projectsExists = appController.getProjectsList();
+            const projectElement = projectsExists.find(el => el.name === project);
+            const todoElement =  projectElement.getTodos().find(todo => todo.title === todoName);
  
-       todoElement.editTodo(title);       
+        todoElement.editTodo(title);       
         newFormEditTask.style.display='none';
         event.target.title= '';
         renderTodos(project);
