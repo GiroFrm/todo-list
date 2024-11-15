@@ -1,10 +1,11 @@
 
 import appController from "./appController";
-import { setUpEditForm } from "./setupEventListeners";
+import { setUpEditForm, setupTodosProject } from "./setupEventListeners";
 
 export const containerAddProject = document.querySelector('.formAddProject');
              
  export const btnProject = document.querySelector('.project-btn');
+ 
     btnProject.addEventListener('click',()=>{
         if (containerAddProject.style.display === 'none') {
             containerAddProject.style.display = 'block';
@@ -17,16 +18,18 @@ export const containerAddProject = document.querySelector('.formAddProject');
      document.getElementById('projectForm').onsubmit = function(event) {
         event.preventDefault(); // Prevent the form from submitting the traditional way
         const projectName = document.getElementById('projectNameInput').value;
-        createNewProject(projectName);
+       createNewProject(projectName);
+       
         document.getElementById('projectNameInput').value= '';
        
     };
 
     document.getElementById('cancelButton').onclick = function() {
         document.getElementById('projectNameInput').value = ''; // Clear the input field
-        document.querySelector('.formAddTodo').style.display = 'none'; // Hide the form
+        document.querySelector('.formAddProject').style.display = 'none'; // Hide the form
     };
 
+     
   
     function createNewProject(name) {
         appController.addNewProject(name);
@@ -44,6 +47,8 @@ export const containerAddProject = document.querySelector('.formAddProject');
                  newProject.innerHTML = element.name;
                
                  projectsContainer.appendChild(newProject);
+                 //add click event to rendered new projects
+                 setupTodosProject(); 
     });
 
   }
@@ -108,4 +113,36 @@ export const containerAddProject = document.querySelector('.formAddProject');
          })
     }
 
+
+   export function renderSelectProjects() {
+        //get list of project
+        const projectsList  = appController.getProjectsList(); 
+        // get form add new todos
+        const selectMenu = document.querySelector('#projectSelect');  
+             selectMenu.innerHTML = ''     
+        // for each project build an option element
+        projectsList.forEach((project)=>{
+            const option = document.createElement('option');
+                option.value = project.name;
+                option.innerHTML = project.name;
+                selectMenu.appendChild(option);
+            
+        })
+    }
+
+    export function renderSelectEditProjects() {
+        //get list of project
+        const projectsList  = appController.getProjectsList(); 
+        // get form add new todos
+        const selectMenu = document.querySelector('#projectSelectEdit');  
+             selectMenu.innerHTML = '';
+        // for each project build an option element
+        projectsList.forEach((project)=>{
+            const option = document.createElement('option');
+                option.value = project.name;
+                option.innerHTML = project.name;
+                selectMenu.appendChild(option);
+              //  selectMenuEdit.appendChild(option);
+        })
+    }
   
