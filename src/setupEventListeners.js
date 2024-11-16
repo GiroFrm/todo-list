@@ -54,10 +54,10 @@ cancelBtnTaskFrom.addEventListener('click', ()=>{
         const title = event.target.title.value;
         const project = event.target.project.value;
         const description = event.target.description.value;
-        // const priority = event.target.priority.value;
+         const priority = event.target.priority.value;
         // const dueDate = event.target.dueDate.value;
 
-             const todo = createTodo(title, description);
+             const todo = createTodo(title, description,priority);
              appController.addTodoToProject(todo, project);
          
         renderTodos(project); 
@@ -68,10 +68,11 @@ cancelBtnTaskFrom.addEventListener('click', ()=>{
        })
  }
 
- export function setUpEditForm(todoName, projectName) {
+ export function setUpEditForm(todoName, projectName, priority) {
     document.querySelector('#editFormTodo').style.display="block";
     renderSelectEditProjects() 
-    const formEditTask = document.querySelector('#editTaskform');
+    const formEditTask = document.querySelector('.addEditTaskform');
+
     const newFormEditTask = formEditTask.cloneNode(true); 
         formEditTask.parentNode.replaceChild(newFormEditTask, formEditTask);
 
@@ -79,8 +80,10 @@ cancelBtnTaskFrom.addEventListener('click', ()=>{
         cancelButton.addEventListener('click', ()=>{
         newFormEditTask.style.display="none";
      })
+     
      const projectSelect = document.getElementById('projectSelectEdit');      
          projectSelect.value = projectName;
+         document.getElementById('optionsEdit').value = priority; 
 
         newFormEditTask.addEventListener("submit", (event)=>{
             event.preventDefault(); 
@@ -88,14 +91,15 @@ cancelBtnTaskFrom.addEventListener('click', ()=>{
             const title = event.target.title.value;
             const project = event.target.project.value;
             const description = event.target.description.value;
-        // const priority = event.target.priority.value;
+            const priority = event.target.priority.value;
         // const dueDate = event.target.dueDate.value;
          
             const projectsExists = appController.getProjectsList();
             const projectElement = projectsExists.find(el => el.name === project);
             const todoElement =  projectElement.getTodos().find(todo => todo.title === todoName);
  
-        todoElement.editTodo(title);       
+         
+        todoElement.editTodo(title,description, priority);       
         newFormEditTask.style.display='none';
         event.target.title= '';
         renderTodos(project);
