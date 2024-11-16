@@ -89,6 +89,15 @@ export const containerAddProject = document.querySelector('.formAddProject');
             todoContainer.appendChild(cancel);
 
             document.querySelector('.project-section').appendChild(todoContainer);
+
+            input.addEventListener('change', ()=>{
+
+                if(input.checked) {
+                    console.log('is checked')
+                } else {
+                    console.log('check is uncheck')
+                }
+            })
             
             cancel.addEventListener('click', ()=>{
                 project.removeTodo(todo);
