@@ -98,11 +98,15 @@ export const containerAddProject = document.querySelector('.formAddProject');
                     edit.style.display="none"
                     cancel.style.display="none";
                     todoHeader.style.textDecoration=" line-through";
+                    todo.toggleCompleted();
+                    
                 } else {
                     console.log('check is uncheck')
                       edit.style.display="block";
                       cancel.style.display="block";
                       todoHeader.style.textDecoration=" none";
+                      todo.toggleCompleted();
+                    
                 }
             })
             
@@ -115,15 +119,12 @@ export const containerAddProject = document.querySelector('.formAddProject');
                 
                 document.querySelector('#editFormTodo').style.display="block";
 
-                const formEditTask = document.querySelector('#editTaskform');
-          
+                const formEditTask = document.querySelector('.addEditTaskform');
                 formEditTask.style.display="block";
                 document.getElementById('titleInputEdit').value = todo.title;
                 document.getElementById('descriptionInputEdit').value = todo.description;
-                document.getElementById('projectSelectEdit').value = 'webdevelopment'; 
-                document.getElementById('projectSelectEdit').selected = true;
-
-                setUpEditForm(todo.title, project.name);
+              
+                setUpEditForm(todo.title, project.name, todo.priority);
              
             })
          })
