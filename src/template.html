@@ -27,22 +27,53 @@
         </div>
     </aside>
     <div>
-        <h1>Project title</h1>
+        <h1 class="projectSectionTitle">Project title</h1>
         <button class="btn-addtask">Add Task</button>
 
         <div class="formAddTodo" style="display: none">
             <form class="addTaskform">
                 <!-- Input for Title -->
-                <input type="text"  name="title" placeholder="Task Name"  required>
-                <textarea name="description" rows="4" placeholder="Description"></textarea>
-                 <div>
+                <input type="text" id="titleInput" name="title" placeholder="Task Name"  required>
+                <textarea name="description" id="descriptionInput" rows="4" placeholder="Description"></textarea>
+               <div>
+                <label for="options">priority:</label> 
+                <select id="options" name="priority"> 
+                    <option value="option1">priority 1</option> 
+                    <option value="option2">priority 2</option> 
+                    <option value="option3">priority 3</option> 
+                </select>
+            </div>
+                <div>     
                 <select id="projectSelect" name="project">
                     <option value="Home1">Home1</option>
-                    <option value="Work">Work</option>
+                    <option value="webdevelopment">Web development</option>
                     <!-- Add more options as needed -->
                 </select>
                 <button type="submit">Add</button>
                 <button type="button" id="cancelButtonTodo">Cancel</button>
+            </div>
+            </form>
+        </div>
+
+        <div id="editFormTodo" class="formAddTodo"  style="display: none">
+            <form   class="addEditTaskform" >
+                <!-- Input for Title -->
+                <input type="text" id="titleInputEdit" name="title" placeholder="Task Name"  required>
+                <textarea name="description" id="descriptionInputEdit" rows="4" placeholder="Description"></textarea>
+                <label for="options">priority:</label> 
+                <select id="optionsEdit" name="priority"> 
+                    <option value="option1">priority 1</option> 
+                    <option value="option2">priority 2</option> 
+                    <option value="option3">priority 3</option> 
+                </select>
+                <div>
+                <select id="projectSelectEdit" name="project">
+                    <option value="Home1">Home1</option>
+                    <option value="webdevelopment">Web development</option>
+                    <!-- Add more options as needed -->
+                </select>
+                <button type="submit">Add</button>
+                <button type="button" id="cancelButtonTodoEdit">Cancel</button>
             </div>
             </form>
         </div>
