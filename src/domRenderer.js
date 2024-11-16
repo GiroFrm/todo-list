@@ -93,9 +93,16 @@ export const containerAddProject = document.querySelector('.formAddProject');
             input.addEventListener('change', ()=>{
 
                 if(input.checked) {
-                    console.log('is checked')
+                    console.log('is checked');
+                    //apply line throught  todo
+                    edit.style.display="none"
+                    cancel.style.display="none";
+                    todoHeader.style.textDecoration=" line-through";
                 } else {
                     console.log('check is uncheck')
+                      edit.style.display="block";
+                      cancel.style.display="block";
+                      todoHeader.style.textDecoration=" none";
                 }
             })
             
