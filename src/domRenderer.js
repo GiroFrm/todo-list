@@ -1,6 +1,7 @@
 
 import appController from "./appController";
 import { setUpEditForm, setupTodosProject } from "./setupEventListeners";
+import { format, parseISO } from 'date-fns';
 
 export const containerAddProject = document.querySelector('.formAddProject');
              
@@ -68,7 +69,11 @@ export const containerAddProject = document.querySelector('.formAddProject');
             todoContainer.appendChild(todoHeader);
             const label = document.createElement('label');
             label.classList.add('container');
+            const date = document.createElement('p');
+            date.classList.add('date-todo');
+            date.innerHTML='date';
             todoHeader.appendChild(label);
+            todoHeader.appendChild(date);
             const titleTodo = document.createElement('p');
             titleTodo.innerHTML = todo.title;
             const input = document.createElement('input');
@@ -89,7 +94,14 @@ export const containerAddProject = document.querySelector('.formAddProject');
             todoContainer.appendChild(cancel);
 
             document.querySelector('.project-section').appendChild(todoContainer);
-
+           
+            if(todo.dueDate){
+            const dateNumber = parseISO(todo.dueDate); 
+            const dayNumber = format(dateNumber, 'd');
+            const abbreviatedMonthName = format(dateNumber, 'MMM');
+            date.innerHTML = `${abbreviatedMonthName} ${dayNumber}`
+            }
+            
             input.addEventListener('change', ()=>{
 
                 if(input.checked) {
@@ -124,7 +136,7 @@ export const containerAddProject = document.querySelector('.formAddProject');
                 document.getElementById('titleInputEdit').value = todo.title;
                 document.getElementById('descriptionInputEdit').value = todo.description;
               
-                setUpEditForm(todo.title, project.name, todo.priority);
+                setUpEditForm(todo.title, project.name, todo.priority, todo.dueDate);
              
             })
          })
