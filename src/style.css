@@ -108,6 +108,7 @@ body {
   .todo-container {
     display: flex;
     align-items: center;
+    border: 2px solid red;
   }
 
   .todo-delete {
@@ -116,6 +117,7 @@ body {
 
   .todo-header {
     margin-right: 0.5rem;
+   
   }
 
   /* Form addNew Task*/
@@ -123,9 +125,26 @@ body {
   .formAddTodo {
     border: 1px solid grey;
     margin-bottom: 2rem;   
+  
   }
   
   .addTaskform {
     display: flex;
     flex-direction: column;
+    border: 1px solid yellow
   }
+
+  .addEditTaskform{
+    display: flex;
+    flex-direction: column;
+    
+   
+  }
+
+
+  /* #editTaskform {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid green;
+  }
+   */
