@@ -27,7 +27,6 @@ function handleProjectClick(event) {
 }
 
 const newTaskForm =  document.querySelector('.formAddTodo'); //html template
-
 const cancelBtnTaskFrom = document.querySelector('#cancelButtonTodo');
 
 document.querySelector('.btn-addtask').addEventListener("click",()=>{
@@ -40,41 +39,40 @@ cancelBtnTaskFrom.addEventListener('click', ()=>{
     newTaskForm.style.display='none';
 })
 
- 
 
  export function setUpFormTodo() {
     // get form from HTML
     
     const formSubmitTask = document.querySelector('.addTaskform');
-
+    formSubmitTask.addEventListener("submit", handleTaskSubmit);
     
-       formSubmitTask.addEventListener("submit", (event)=>{
-        event.preventDefault(); 
-        
-         const title = event.target.title.value;
-         const project = event.target.project.value;
-         const description = event.target.description.value;
-         const priority = event.target.priority.value;
-         const dueDate = event.target.startdate.value;
-
-             const todo = createTodo(title, description,priority, dueDate);
-           
-            const dateString =dueDate;
-          
-             const date = parseISO(dateString); 
-             const dayNumber = format(date, 'd');
-             const abbreviatedMonthName = format(date, 'MMM');
-             console.log(`${abbreviatedMonthName} ${dayNumber}`)
-
-             appController.addTodoToProject(todo, project);
-         
-        renderTodos(project); 
-
-        newTaskForm.style.display='none';
-        event.target.title= '';
-      
-       })
  }
+
+ function handleTaskSubmit(event) {
+    event.preventDefault(); 
+        
+    const title = event.target.title.value;
+    const project = event.target.project.value;
+    const description = event.target.description.value;
+    const priority = event.target.priority.value;
+    const dueDate = event.target.startdate.value;
+
+     const todo = createTodo(title, description,priority, dueDate);
+    formatDueDate(dueDate);
+    appController.addTodoToProject(todo, project);
+    
+    renderTodos(project); 
+
+   newTaskForm.style.display='none';
+   event.target.reset()
+ }
+
+ function formatDueDate(dueDate) { 
+    const date = parseISO(dueDate);
+     const dayNumber = format(date, 'd'); 
+     const abbreviatedMonthName = format(date, 'MMM'); 
+    
+}
 
  export function setUpEditForm(todoName, projectName, priority, dueDate) {
     document.querySelector('#editFormTodo').style.display="block";
