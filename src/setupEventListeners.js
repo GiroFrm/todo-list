@@ -58,7 +58,7 @@ cancelBtnTaskFrom.addEventListener('click', ()=>{
     const dueDate = event.target.startdate.value;
 
      const todo = createTodo(title, description,priority, dueDate);
-    formatDueDate(dueDate);
+  
     appController.addTodoToProject(todo, project);
     
     renderTodos(project); 
