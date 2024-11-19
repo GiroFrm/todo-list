@@ -1,8 +1,7 @@
 import appController from "./appController";
 import createTodo from "./createTodo";
 import { renderProjects, renderTodos, renderSelectProjects,  renderSelectEditProjects } from "./domRenderer";
-import { format, parseISO } from 'date-fns';
-import { formatDueDate, resetForm } from './utils';
+import { resetForm } from './utils';
 
 export function setupTodosProject(){
     const projectElements = document.querySelectorAll(".project1"); 
@@ -58,22 +57,14 @@ cancelBtnTaskFrom.addEventListener('click', ()=>{
     const priority = event.target.priority.value;
     const dueDate = event.target.startdate.value;
 
-     const todo = createTodo(title, description,priority, dueDate);
-  
+    const todo = createTodo(title, description,priority, dueDate);
     appController.addTodoToProject(todo, project);
-    
     renderTodos(project); 
 
    newTaskForm.style.display='none';
    resetForm(event.target);
  }
 
- function formatDueDate(dueDate) { 
-    const date = parseISO(dueDate);
-     const dayNumber = format(date, 'd'); 
-     const abbreviatedMonthName = format(date, 'MMM'); 
-    
-}
 
  export function setUpEditForm(todoName, projectName, priority, dueDate) {
     const editFormTodo = document.querySelector('#editFormTodo'); editFormTodo.style.display = "block";
@@ -112,9 +103,7 @@ function handleEditFormSubmit(event, todoName, projectName) {
     const priority = event.target.priority.value; 
     const startDate = event.target.startdate.value; 
 
-    const projectsExists = appController.getProjectsList(); 
-    const projectElement = projectsExists.find(el => el.name === project);
-     const todoElement = projectElement.getTodos().find(todo => todo.title === todoName); 
+    const todoElement = appController.getTodoByProject(project, todoName);
 
     todoElement.editTodo(title, description, priority, startDate); 
     event.target.style.display  = 'none';
