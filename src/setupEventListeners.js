@@ -75,46 +75,48 @@ cancelBtnTaskFrom.addEventListener('click', ()=>{
 }
 
  export function setUpEditForm(todoName, projectName, priority, dueDate) {
-    document.querySelector('#editFormTodo').style.display="block";
-    renderSelectEditProjects() 
+    const editFormTodo = document.querySelector('#editFormTodo'); editFormTodo.style.display = "block";
+    renderSelectEditProjects();
+    
     const formEditTask = document.querySelector('.addEditTaskform');
-
     const newFormEditTask = formEditTask.cloneNode(true); 
-        formEditTask.parentNode.replaceChild(newFormEditTask, formEditTask);
-
-     const cancelButton = document.querySelector('#cancelButtonTodoEdit');
-        cancelButton.addEventListener('click', ()=>{
-        newFormEditTask.style.display="none";
-     })
-     
-     const projectSelect = document.getElementById('projectSelectEdit');      
-         projectSelect.value = projectName;
-
-         document.getElementById('optionsEdit').value = priority; 
-
-        document.getElementById('startEdit').value = dueDate
-
-        newFormEditTask.addEventListener("submit", (event)=>{
-            event.preventDefault(); 
-        
-            const title = event.target.title.value;
-            const project = event.target.project.value;
-            const description = event.target.description.value;
-            const priority = event.target.priority.value;
-            const startDate = event.target.startdate.value;
-         
-            const projectsExists = appController.getProjectsList();
-            const projectElement = projectsExists.find(el => el.name === project);
-            const todoElement =  projectElement.getTodos().find(todo => todo.title === todoName);
+    formEditTask.parentNode.replaceChild(newFormEditTask, formEditTask);
+    
+    addEditFormEventListeners(newFormEditTask, todoName, projectName, priority, dueDate);
  
-            
-        todoElement.editTodo(title,description, priority, startDate);       
-        newFormEditTask.style.display='none';
-        event.target.title= '';
-        renderTodos(project);
+ }
 
-       
-      
-       })
 
+ function addEditFormEventListeners(newFormEditTask, todoName, projectName, priority, dueDate) { 
+    const cancelButton = document.querySelector('#cancelButtonTodoEdit');
+    cancelButton.addEventListener('click', () => { 
+        newFormEditTask.style.display = "none"; 
+    }); 
+    const projectSelect = document.getElementById('projectSelectEdit');
+    projectSelect.value = projectName; 
+
+    document.getElementById('optionsEdit').value = priority; 
+    document.getElementById('startEdit').value = dueDate; 
+
+    newFormEditTask.addEventListener("submit", (event) => {  
+        event.preventDefault(); 
+        handleEditFormSubmit(event, todoName, projectName); 
+    }); 
+}
+
+function handleEditFormSubmit(event, todoName, projectName) { 
+    const title = event.target.title.value; 
+    const project = event.target.project.value; 
+    const description = event.target.description.value; 
+    const priority = event.target.priority.value; 
+    const startDate = event.target.startdate.value; 
+
+    const projectsExists = appController.getProjectsList(); 
+    const projectElement = projectsExists.find(el => el.name === project);
+     const todoElement = projectElement.getTodos().find(todo => todo.title === todoName); 
+
+    todoElement.editTodo(title, description, priority, startDate); 
+    event.target.style.display  = 'none';
+    event.target.reset(); 
+    renderTodos(project);
  }
