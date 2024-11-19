@@ -92,11 +92,11 @@ cancelBtnTaskFrom.addEventListener('click', ()=>{
 
     newFormEditTask.addEventListener("submit", (event) => {  
         event.preventDefault(); 
-        handleEditFormSubmit(event, todoName, projectName); 
+        handleEditFormSubmit(event, todoName); 
     }); 
 }
 
-function handleEditFormSubmit(event, todoName, projectName) { 
+function handleEditFormSubmit(event, todoName) { 
     const title = event.target.title.value; 
     const project = event.target.project.value; 
     const description = event.target.description.value; 
