@@ -2,6 +2,7 @@ import appController from "./appController";
 import createTodo from "./createTodo";
 import { renderProjects, renderTodos, renderSelectProjects,  renderSelectEditProjects } from "./domRenderer";
 import { format, parseISO } from 'date-fns';
+import { formatDueDate, resetForm } from './utils';
 
 export function setupTodosProject(){
     const projectElements = document.querySelectorAll(".project1"); 
@@ -64,7 +65,7 @@ cancelBtnTaskFrom.addEventListener('click', ()=>{
     renderTodos(project); 
 
    newTaskForm.style.display='none';
-   event.target.reset()
+   resetForm(event.target);
  }
 
  function formatDueDate(dueDate) { 
@@ -117,6 +118,6 @@ function handleEditFormSubmit(event, todoName, projectName) {
 
     todoElement.editTodo(title, description, priority, startDate); 
     event.target.style.display  = 'none';
-    event.target.reset(); 
+    resetForm(event.target);
     renderTodos(project);
  }
