@@ -1,7 +1,9 @@
 import appController from "./appController";
 import createTodo from "./createTodo";
+import { createFormTodoElement } from "./formTodoElement";
 import { renderProjects, renderTodos, renderSelectProjects,  renderSelectEditProjects } from "./domRenderer";
 import { resetForm } from './utils';
+
 
 export function setupTodosProject(){
     const projectElements = document.querySelectorAll(".project1"); 
@@ -12,6 +14,7 @@ export function setupTodosProject(){
     });
       
 }
+
 export function setupAddProjectForm() {
     const btnProject = document.querySelector(".project-btn");
     btnProject.addEventListener("click", toggleProjectForm);
@@ -55,24 +58,34 @@ function handleProjectClick(event) {
     }
 }
 
-const newTaskForm =  document.querySelector('.formAddTodo'); //html template
-const cancelBtnTaskFrom = document.querySelector('#cancelButtonTodo');
+// const newTaskForm =  document.querySelector('.formAddTodo'); //html template
+// const cancelBtnTaskFrom = document.querySelector('#cancelButtonTodo');
+// const newTodoForm = createFormTodoElement();
 
 document.querySelector('.btn-addtask').addEventListener("click",()=>{
-    newTaskForm.style.display='block';
-    renderSelectProjects();
+    let existingForm = document.querySelector('.formAddTodo'); 
+    if (!existingForm) {
+         setUpFormTodo(); 
+        }
+
+        existingForm = document.querySelector('.formAddTodo');
+         existingForm.style.display = existingForm.style.display === 'none' ? 'block' : 'none';
+        
+         renderSelectProjects(existingForm);
  
 })
 
-cancelBtnTaskFrom.addEventListener('click', ()=>{
-    newTaskForm.style.display='none';
-})
-
-
  export function setUpFormTodo() {
-   
-    const formSubmitTask = document.querySelector('.addTaskform');
+
+    const formContainer = document.querySelector('.formTodoContainer');
+    const formSubmitTask = createFormTodoElement();
+    formContainer.appendChild(formSubmitTask);
     formSubmitTask.addEventListener("submit", handleTaskSubmit);
+    const btnCancel =  formSubmitTask.querySelector('#buttonCancel1');
+
+    btnCancel.addEventListener("click", ()=>{
+        formContainer.removeChild(formSubmitTask);
+    });
     
  }
 
@@ -89,35 +102,24 @@ cancelBtnTaskFrom.addEventListener('click', ()=>{
     appController.addTodoToProject(todo, project);
 
     renderTodos(project); 
-   newTaskForm.style.display='none';
-   resetForm(event.target);
+    this.style.display='none';
+    resetForm(event.target);
  }
 
 
- export function setUpEditForm(todoName, projectName, priority, dueDate) {
-    const editFormTodo = document.querySelector('#editFormTodo'); editFormTodo.style.display = "block";
-    renderSelectEditProjects();
-    
-    const formEditTask = document.querySelector('.addEditTaskform');
-    const newFormEditTask = formEditTask.cloneNode(true); 
-    formEditTask.parentNode.replaceChild(newFormEditTask, formEditTask);
-    
-    addEditFormEventListeners(newFormEditTask, todoName, projectName, priority, dueDate);
+
+ export function setUpEditForm(formTask,todoName, projectName, priority, dueDate) {
+    renderSelectProjects(formTask);
+    addEditFormEventListeners(formTask, todoName, projectName, priority, dueDate);
  
  }
 
-
  function addEditFormEventListeners(newFormEditTask, todoName, projectName, priority, dueDate) { 
-    const cancelButton = document.querySelector('#cancelButtonTodoEdit');
-    cancelButton.addEventListener('click', () => { 
-        newFormEditTask.style.display = "none"; 
-    }); 
-    const projectSelect = document.getElementById('projectSelectEdit');
+   
+    const projectSelect = newFormEditTask.querySelector('#projectSelect');
     projectSelect.value = projectName; 
-
-    document.getElementById('optionsEdit').value = priority; 
-    document.getElementById('startEdit').value = dueDate; 
-
+    newFormEditTask.querySelector('#options').value = priority; 
+    newFormEditTask.querySelector('#start').value = dueDate; 
     newFormEditTask.addEventListener("submit", (event) => {  
         event.preventDefault(); 
         handleEditFormSubmit(event, todoName); 
@@ -132,8 +134,8 @@ function handleEditFormSubmit(event, todoName) {
     const startDate = event.target.startdate.value; 
 
     const todoElement = appController.getTodoByProject(project, todoName);
-
     todoElement.editTodo(title, description, priority, startDate); 
+
     event.target.style.display  = 'none';
     resetForm(event.target);
     renderTodos(project);
