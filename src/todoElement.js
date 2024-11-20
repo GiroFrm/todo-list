@@ -1,7 +1,8 @@
 
 import { parseISO, format } from 'date-fns';
 import { setUpEditForm } from './setupEventListeners';
-import { renderTodos } from './domRenderer';
+import { renderTodos, renderSelectProjects, renderSelectProjects1 } from './domRenderer';
+import { createFormTodoElement } from './formTodoElement';
 
 export function createTodoElement(todo, project) {
     const todoContainer = document.createElement('div');
@@ -56,12 +57,13 @@ function createEditButton(todo, project) {
     edit.innerHTML = 'edit';
     edit.style.cursor = "pointer";
     edit.addEventListener("click", () => {
-        document.querySelector('#editFormTodo').style.display = "block";
-        const formEditTask = document.querySelector('.addEditTaskform');
-        formEditTask.style.display = "block";
-        document.getElementById('titleInputEdit').value = todo.title;
-        document.getElementById('descriptionInputEdit').value = todo.description;
-        setUpEditForm(todo.title, project.name, todo.priority, todo.dueDate);
+        const formContainer = document.querySelector('.formTodoContainer');
+        const formEditTask = createFormTodoElement();
+        formEditTask.querySelector('.formSubmitBtn').innerHTML= 'Edit';
+        formContainer.appendChild(formEditTask);
+        formEditTask.querySelector('#titleInput').value = todo.title;
+        formEditTask.querySelector('#descriptionInput').value = todo.description;  
+        setUpEditForm(formEditTask,todo.title, project.name, todo.priority, todo.dueDate);
     });
     return edit;
 }
