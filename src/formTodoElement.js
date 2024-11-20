@@ -56,6 +56,8 @@ export function createFormTodoElement() {
     const optionProjectsMenuContainer = document.createElement('div')
     formTodo.appendChild(optionProjectsMenuContainer);
     const selectMenuProjects = document.createElement('select');
+    selectMenuProjects.name = 'project'
+    selectMenuProjects.id = 'projectSelect';
     optionProjectsMenuContainer.appendChild(selectMenuProjects);
     const project1 = document.createElement('option')
     project1.value = 'Home1';
@@ -67,13 +69,18 @@ export function createFormTodoElement() {
     selectMenuProjects.appendChild(project1);
 
     const buttonAdd = document.createElement('button');
+    buttonAdd.classList.add('formSubmitBtn');
     buttonAdd.type='submit';
     buttonAdd.innerHTML = 'Add';
     const buttonCancel = document.createElement('button');
+    buttonCancel.id='buttonCancel1'
     buttonCancel.type='button';
     buttonCancel.innerHTML = 'Cancel';
-    optionProjectsMenuContainer.appendChild(buttonAdd);
-    optionProjectsMenuContainer.appendChild(buttonCancel);
+   buttonCancel.addEventListener('click', ()=>{
+    formContainer.style.display='none';
+   })
+    formTodo.appendChild(buttonAdd);
+    formTodo.appendChild(buttonCancel);
    
     return formContainer;
 }
