@@ -58,18 +58,13 @@ function handleProjectClick(event) {
     }
 }
 
-// const newTaskForm =  document.querySelector('.formAddTodo'); //html template
-// const cancelBtnTaskFrom = document.querySelector('#cancelButtonTodo');
-// const newTodoForm = createFormTodoElement();
-
 document.querySelector('.btn-addtask').addEventListener("click",()=>{
     let existingForm = document.querySelector('.formAddTodo'); 
     if (!existingForm) {
          setUpFormTodo(); 
         }
-
         existingForm = document.querySelector('.formAddTodo');
-         existingForm.style.display = existingForm.style.display === 'none' ? 'block' : 'none';
+        existingForm.style.display = existingForm.style.display === 'none' ? 'block' : 'none';
         
          renderSelectProjects(existingForm);
  
