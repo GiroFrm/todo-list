@@ -2,7 +2,6 @@ body {
    display:grid;
    grid-template-columns: 15% 100%;
    height: 100vh;
-
 }
 
 .sidebar {
@@ -12,14 +11,13 @@ body {
 .project-section {
     background-color: grey;
     padding-left: 10%;
-  
 }
 
 .project-btn {
-    background-color: blue;
+    background-color: red;
     color:white;
     border: none;
-    padding: 0.5rem 1rem;
+    padding: 0.6rem 1rem;
     cursor: pointer;
 }
 
@@ -128,6 +126,10 @@ body {
   
   }
   
+  .date-todo {
+    font-size: 0.8rem;
+  }
+  
   .addTaskform {
     display: flex;
     flex-direction: column;
@@ -141,10 +143,3 @@ body {
    
   }
 
-
-  /* #editTaskform {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid green;
-  }
-   */
