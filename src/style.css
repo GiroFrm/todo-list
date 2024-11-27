@@ -114,7 +114,7 @@ body {
   .todo-container {
     display: flex;
     align-items: center;
-    border: 2px solid red;
+    border: 1px solid red;
   }
 
   .todo-delete {
