@@ -21,6 +21,14 @@ body {
     cursor: pointer;
 }
 
+.btn-addtask {
+  background-color: rgb(111, 111, 223);
+  color:white;
+  border: none;
+  padding: 0.6rem 0.9rem;
+  cursor: pointer;
+}
+
 .add-task {
     font-weight: bold;
     font-size: 1.2rem;
