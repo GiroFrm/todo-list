@@ -118,12 +118,11 @@ body {
   }
 
   .todo-delete {
-    margin-left: 0.rem;
+    margin-left: 0.2rem;
   }
 
   .todo-header {
     margin-right: 0.9rem;
-   
   }
 
   /* Form addNew Task*/
