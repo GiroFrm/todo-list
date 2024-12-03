@@ -6,16 +6,27 @@ import { createTodoElement } from "./todoElement";
 
 
   export function renderProjects() {
-        const projectsContainer =  document.querySelector('.projects-container');
-        projectsContainer.innerHTML= ''
+        const projectsContainer =  document.querySelector('.project-container');
+       // projectsContainer.innerHTML= ''
+       const ul = document.querySelector('.list-projects'); 
+       ul.innerHTML= '';
         const listAllProjects = appController.getProjectsList();
           listAllProjects.forEach(element => {
-            const newProject = document.createElement('p');
-                 newProject.classList.add('project1');
-                 newProject.innerHTML = element.name;
-               
-                 projectsContainer.appendChild(newProject);
+           
+            const li = document.createElement('li');
+            const newProject = document.createElement('a');
+              newProject.href = '#';
+              newProject.textContent = element.name;   
+              newProject.classList.add('project1');
+              li.appendChild(newProject);  
+             
+              ul.appendChild(li);
+            // const newProject = document.createElement('p');
+            //      newProject.classList.add('project1');
+            //      newProject.innerHTML = element.name;
+                //  projectsContainer.appendChild(newProject);
                  //add click event to rendered new projects
+               //  projectsContainer.appendChild();
                  setupTodosProject(); 
     });
 
