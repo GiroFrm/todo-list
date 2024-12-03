@@ -19,14 +19,7 @@ import { createTodoElement } from "./todoElement";
               newProject.textContent = element.name;   
               newProject.classList.add('project1');
               li.appendChild(newProject);  
-             
               ul.appendChild(li);
-            // const newProject = document.createElement('p');
-            //      newProject.classList.add('project1');
-            //      newProject.innerHTML = element.name;
-                //  projectsContainer.appendChild(newProject);
-                 //add click event to rendered new projects
-               //  projectsContainer.appendChild();
                  setupTodosProject(); 
     });
 
