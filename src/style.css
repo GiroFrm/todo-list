@@ -50,6 +50,36 @@ body {
   cursor: pointer;
 }
 
+.btn-addtask:focus { 
+  outline: 2px solid #218838;
+ }
+
+ .formAddTodo,
+ .formAddProject {
+   margin-top: 1rem;
+ }
+
+ .addEditTaskForm label,
+ .formAddProject label {
+   display: block;
+   margin: 0.5rem 0 0.2rem 0;
+ }
+
+ .addEditTaskForm input,
+ .formAddProject input,
+ .addEditTaskForm textarea,
+ .addEditTaskForm select {
+   width: 100%;
+   padding: 0.5rem;
+   margin-bottom: 1rem;
+ }
+
+ .addEditTaskForm button,
+ .formAddProject button {
+   padding: 0.5rem 1rem;
+   margin-right: 0.5rem;
+ }
+
 .add-task {
     font-weight: bold;
     font-size: 1.2rem;
@@ -60,6 +90,9 @@ body {
     font-size: 1.5rem;
 }
 
+.project-section {
+  margin-top: 2rem;
+}
 /* Style checkbox*/
 
 /* The container */
