@@ -36,6 +36,10 @@ body {
 
   .project-btn:focus {
      outline: 2px solid #0056b3;
+  }
+
+  .hero {
+     padding: 1rem; 
     }
 
 .btn-addtask {
