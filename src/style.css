@@ -25,12 +25,18 @@ body {
 }
 
 .project-btn {
-    background-color: red;
-    color:white;
+  display: block;
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    background-color: #007BFF;
+    color: white;
     border: none;
-    padding: 0.6rem 1rem;
     cursor: pointer;
-}
+  }
+
+  .project-btn:focus {
+     outline: 2px solid #0056b3;
+    }
 
 .btn-addtask {
   background-color: rgb(111, 111, 223);
