@@ -20,8 +20,7 @@ body {
 }
 
 .project-section {
-    background-color: rgb(232, 203, 203);
-    padding-left: 10%;
+  margin-top: 2rem;
 }
 
 .project-btn {
@@ -91,8 +90,8 @@ body {
 }
 
 .project-section {
-  margin-top: 2rem;
-}
+  
+   }
 /* Style checkbox*/
 
 /* The container */
@@ -168,7 +167,9 @@ body {
   .todo-container {
     display: flex;
     align-items: center;
-    border: 1px solid red;
+    border: 1px solid #ccc; 
+    padding: 1rem; 
+    margin-bottom: 1rem;
   }
 
   .todo-delete {
