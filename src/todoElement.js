@@ -34,9 +34,11 @@ export function createTodoElement(todo, project) {
 
     const edit = createEditButton(todo, project);
     const cancel = createDeleteButton(todo, project);
+    const buttonsContainer = document.createElement('div');
+    buttonsContainer.appendChild(edit);
+    buttonsContainer.appendChild(cancel);
 
-    todoContainer.appendChild(edit);
-    todoContainer.appendChild(cancel);
+    todoContainer.appendChild(buttonsContainer);
 
     if (todo.dueDate) {
         const dateNumber = parseISO(todo.dueDate);
@@ -53,8 +55,9 @@ export function createTodoElement(todo, project) {
 }
 
 function createEditButton(todo, project) {
-    const edit = document.createElement('p');
+    const edit = document.createElement('button');
     edit.innerHTML = 'edit';
+    edit.classList.add('edit')
     edit.style.cursor = "pointer";
     edit.addEventListener("click", () => {
         const formContainer = document.querySelector('.formTodoContainer');
@@ -69,7 +72,7 @@ function createEditButton(todo, project) {
 }
 
 function createDeleteButton(todo, project) {
-    const cancel = document.createElement('p');
+    const cancel = document.createElement('button');
     cancel.innerHTML = 'delete';
     cancel.classList.add('todo-delete');
     cancel.style.cursor = "pointer";
