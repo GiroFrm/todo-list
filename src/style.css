@@ -15,12 +15,18 @@ body {
   list-style-type: none;
   padding: 0;
 }
+
 .project-container li {
   margin: 0.5rem 0;
 }
 
 .project-section {
   margin-top: 2rem;
+}
+
+.list-projects li a {
+  text-decoration: none;
+  color: black
 }
 
 .project-btn {
