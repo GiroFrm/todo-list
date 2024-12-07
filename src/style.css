@@ -27,6 +27,10 @@ body {
  cursor:pointer;
 }
 
+.project-container li:focus {
+  background-color:#FFEFE5; 
+ }
+
 .project-section {
   margin-top: 2rem;
 }
@@ -55,7 +59,7 @@ body {
     }
 
 .btn-addtask {
-  background-color: rgb(111, 111, 223);
+  background-color: #DC4C3E;
   color:white;
   border: none;
   padding: 0.6rem 0.9rem;
@@ -234,7 +238,7 @@ body {
     }
 
         .todo-delete {
-          background-color: #dc3545;
+          background-color: #DC4C3E;
          
         }
     

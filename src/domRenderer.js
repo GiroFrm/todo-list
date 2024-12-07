@@ -7,7 +7,7 @@ import { createTodoElement } from "./todoElement";
 
   export function renderProjects() {
         const projectsContainer =  document.querySelector('.project-container');
-       // projectsContainer.innerHTML= ''
+        
        const ul = document.querySelector('.list-projects'); 
        ul.innerHTML= '';
         const listAllProjects = appController.getProjectsList();
@@ -17,7 +17,8 @@ import { createTodoElement } from "./todoElement";
             const newProject = document.createElement('a');
               newProject.href = '#';
               newProject.textContent = element.name;   
-              newProject.classList.add('project1');
+              li.classList.add('project1');
+              li.setAttribute('tabindex', '0');
               li.appendChild(newProject);  
               ul.appendChild(li);
                  setupTodosProject(); 
