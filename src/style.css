@@ -14,10 +14,17 @@ body {
 .project-container ul {
   list-style-type: none;
   padding: 0;
+ 
 }
 
 .project-container li {
-  margin: 0.5rem 0;
+  padding: 0.5rem;
+ 
+}
+
+.project-container li:hover {
+ background-color:#E8E8E8;
+ cursor:pointer;
 }
 
 .project-section {
