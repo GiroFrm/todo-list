@@ -70,6 +70,7 @@ body {
 
   .hero {
      padding: 1rem; 
+     position: relative;
     }
 
 .btn-addtask {
@@ -84,9 +85,25 @@ body {
   outline: 2px solid #218838;
  }
 
+ .formTodoContainer {
+   position: fixed;
+   width: 500px;
+   z-index: 99;
+
+ }
+
  .formAddTodo,
  .formAddProject {
    margin-top: 1rem;
+ }
+
+ .formAddTodo {
+  outline: 1px solid green;
+  max-width: 500px;
+ }
+
+ .addTaskform {
+  outline:1px solid red;
  }
 
  .addEditTaskForm label,
