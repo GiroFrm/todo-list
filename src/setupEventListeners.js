@@ -16,13 +16,15 @@ export function setupTodosProject(){
 }
 
 export function setupAddProjectForm() {
-    const btnProject = document.querySelector(".project-btn");
-    btnProject.addEventListener("click", toggleProjectForm);
+    const btnProjects = document.querySelectorAll(".project-btn");
+    btnProjects.forEach(btnProject => { btnProject.addEventListener("click", toggleProjectForm)});
+    // btnProject.addEventListener("click", toggleProjectForm);
     document.getElementById("projectForm").onsubmit = handleProjectFormSubmit;
     document.getElementById("cancelButton").onclick = handleProjectFormCancel;
   }
 
   function toggleProjectForm() {
+    
     const containerAddProject = document.querySelector(".formAddProject");
     containerAddProject.style.display = containerAddProject.style.display === "none" ? "block" : "none";
   }
@@ -57,18 +59,33 @@ function handleProjectClick(event) {
         console.error("Project name not found.");
     }
 }
+const overlay = document.getElementById('overlay');
 
+export function setUpAddTask() {
 document.querySelector('.btn-addtask').addEventListener("click",()=>{
+
     let existingForm = document.querySelector('.formAddTodo'); 
+
     if (!existingForm) {
          setUpFormTodo(); 
+         existingForm = document.querySelector('.formAddTodo');
+         existingForm.style.display = 'none';
+         overlay.style.display = 'block';
         }
-        existingForm = document.querySelector('.formAddTodo');
         existingForm.style.display = existingForm.style.display === 'none' ? 'block' : 'none';
-        
          renderSelectProjects(existingForm);
- 
-})
+    
+}) 
+
+}
+
+window.addEventListener('click', (event) => {
+     if (event.target == overlay) { 
+        overlay.style.display = 'none';
+        const formContainer = document.querySelector('.formTodoContainer');
+        formContainer.innerHTML=''
+} 
+});
 
  export function setUpFormTodo() {
 
@@ -81,7 +98,7 @@ document.querySelector('.btn-addtask').addEventListener("click",()=>{
     btnCancel.addEventListener("click", ()=>{
         formContainer.removeChild(formSubmitTask);
     });
-    
+   
  }
 
  function handleTaskSubmit(event) {
