@@ -35,6 +35,7 @@ export function createTodoElement(todo, project) {
     const edit = createEditButton(todo, project);
     const cancel = createDeleteButton(todo, project);
     const buttonsContainer = document.createElement('div');
+    buttonsContainer.classList.add('flex-line')
     buttonsContainer.appendChild(edit);
     buttonsContainer.appendChild(cancel);
 
@@ -61,6 +62,7 @@ function createEditButton(todo, project) {
     edit.style.cursor = "pointer";
     edit.addEventListener("click", () => {
         const formContainer = document.querySelector('.formTodoContainer');
+        formContainer.innerHTML='';
         const formEditTask = createFormTodoElement();
         formEditTask.querySelector('.formSubmitBtn').innerHTML= 'Edit';
         formContainer.appendChild(formEditTask);
