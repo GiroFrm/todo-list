@@ -14,13 +14,15 @@ export function createFormTodoElement() {
     formTodo.appendChild(input);
 
     const textArea = document.createElement('textarea');
+    textArea.classList.add('description-todoform')
     textArea.name = 'description';
     textArea.id = 'descriptionInput';
-    textArea.rows = '4';
+    textArea.rows = '3';
     textArea.placeholder = 'Description';
     formTodo.appendChild(textArea);
 
     const optionMenuContainer = document.createElement('div');
+    optionMenuContainer.classList.add('formtodo-date-priority-container');
     const labelOptions = document.createElement('label');
     labelOptions.for ='options';
     labelOptions.innerHTML = 'priority:';
@@ -28,7 +30,8 @@ export function createFormTodoElement() {
     const selectMenu = document.createElement('select');
     selectMenu.id= 'options';
     selectMenu.name = 'priority';
-    optionMenuContainer.appendChild(selectMenu);
+    labelOptions.appendChild(selectMenu)
+    // optionMenuContainer.appendChild(selectMenu);
     formTodo.appendChild(optionMenuContainer);
     const priority1 = document.createElement('option');
     priority1.value = 'option1';
@@ -44,18 +47,24 @@ export function createFormTodoElement() {
     selectMenu.appendChild(priority3);
     
     const containerInputDate = document.createElement('div');
+   
     const labelDate = document.createElement('label');
-    containerInputDate.appendChild(labelDate); 
+    labelDate.classList.add('labeldate');
+    labelDate.innerHTML='due date:';
+    optionMenuContainer.appendChild(labelDate); 
+
     formTodo.appendChild(containerInputDate);
     const inputDate = document.createElement('input');
     inputDate.type = 'date';
     inputDate.id='start';
     inputDate.name = 'startdate';
-    containerInputDate.appendChild(inputDate);
-
-    const optionProjectsMenuContainer = document.createElement('div')
+    labelDate.appendChild(inputDate)
+   
+    const optionProjectsMenuContainer = document.createElement('div');
+    optionProjectsMenuContainer.classList.add('formtodo-footer');
     formTodo.appendChild(optionProjectsMenuContainer);
     const selectMenuProjects = document.createElement('select');
+    selectMenuProjects.classList.add('projects-list-menu')
     selectMenuProjects.name = 'project'
     selectMenuProjects.id = 'projectSelect';
     optionProjectsMenuContainer.appendChild(selectMenuProjects);
@@ -68,19 +77,23 @@ export function createFormTodoElement() {
     selectMenuProjects.appendChild(project2);
     selectMenuProjects.appendChild(project1);
 
-    const buttonAdd = document.createElement('button');
-    buttonAdd.classList.add('formSubmitBtn');
-    buttonAdd.type='submit';
-    buttonAdd.innerHTML = 'Add';
+    const containerButtons = document.createElement('div');
     const buttonCancel = document.createElement('button');
+    buttonCancel.classList.add('btn-primary');
     buttonCancel.id='buttonCancel1'
     buttonCancel.type='button';
     buttonCancel.innerHTML = 'Cancel';
-   buttonCancel.addEventListener('click', ()=>{
+    buttonCancel.addEventListener('click', ()=>{
     formContainer.style.display='none';
    })
-    formTodo.appendChild(buttonAdd);
-    formTodo.appendChild(buttonCancel);
+   const buttonAdd = document.createElement('button');
+   buttonAdd.classList.add('formSubmitBtn','btn-primary', 'btn-addtask');
+   buttonAdd.type='submit';
+   buttonAdd.innerHTML = 'Add';
+    containerButtons.classList.add('btn-formtodo-container');
+    containerButtons.appendChild(buttonCancel);
+    containerButtons.appendChild(buttonAdd);
+    optionProjectsMenuContainer.appendChild(containerButtons);
    
     return formContainer;
 }
