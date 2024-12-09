@@ -4,7 +4,13 @@ body {
   padding: 0;
   display: grid;
   grid-template-columns: 15% 85%;
-  height: 100vh;}
+  height: 100vh;
+}
+
+
+  .flex-line{
+   display: flex;
+  }
 
 .sidebar {
   background-color: #FCFAF8; 
