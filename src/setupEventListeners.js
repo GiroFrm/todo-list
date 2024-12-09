@@ -61,8 +61,11 @@ function handleProjectClick(event) {
 const overlay = document.getElementById('overlay');
 
 export function setUpAddTask() {
-document.querySelector('.btn-addtask').addEventListener("click",()=>{
-     
+ const addTasksbtn = document.querySelectorAll('.btn-addtask');
+ 
+ addTasksbtn.forEach(addTaskbtn=>{
+    addTaskbtn.addEventListener("click",()=>{
+    
      document.querySelector('.formTodoContainer').innerHTML=''; 
     let  existingForm  = document.querySelector('.formAddTodo'); 
         
@@ -77,7 +80,7 @@ document.querySelector('.btn-addtask').addEventListener("click",()=>{
          renderSelectProjects(existingForm);
     
 }) 
-
+ })
 }
 
 window.addEventListener('click', (event) => {
