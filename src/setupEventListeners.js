@@ -24,7 +24,6 @@ export function setupAddProjectForm() {
   }
 
   function toggleProjectForm() {
-    
     const containerAddProject = document.querySelector(".formAddProject");
     containerAddProject.style.display = containerAddProject.style.display === "none" ? "block" : "none";
   }
@@ -63,16 +62,18 @@ const overlay = document.getElementById('overlay');
 
 export function setUpAddTask() {
 document.querySelector('.btn-addtask').addEventListener("click",()=>{
-
-    let existingForm = document.querySelector('.formAddTodo'); 
-
+     
+     document.querySelector('.formTodoContainer').innerHTML=''; 
+    let  existingForm  = document.querySelector('.formAddTodo'); 
+        
     if (!existingForm) {
          setUpFormTodo(); 
          existingForm = document.querySelector('.formAddTodo');
          existingForm.style.display = 'none';
          overlay.style.display = 'block';
         }
-        existingForm.style.display = existingForm.style.display === 'none' ? 'block' : 'none';
+       
+         existingForm.style.display = existingForm.style.display === 'none' ? 'block' : 'none';
          renderSelectProjects(existingForm);
     
 }) 
@@ -90,6 +91,7 @@ window.addEventListener('click', (event) => {
  export function setUpFormTodo() {
 
     const formContainer = document.querySelector('.formTodoContainer');
+    formContainer.innerHTML='';
     const formSubmitTask = createFormTodoElement();
     formContainer.appendChild(formSubmitTask);
     formSubmitTask.addEventListener("submit", handleTaskSubmit);
@@ -103,22 +105,17 @@ window.addEventListener('click', (event) => {
 
  function handleTaskSubmit(event) {
     event.preventDefault(); 
-        
     const title = event.target.title.value;
     const project = event.target.project.value;
     const description = event.target.description.value;
     const priority = event.target.priority.value;
     const dueDate = event.target.startdate.value;
-
     const todo = createTodo(title, description,priority, dueDate);
     appController.addTodoToProject(todo, project);
-
     renderTodos(project); 
     this.style.display='none';
     resetForm(event.target);
  }
-
-
 
  export function setUpEditForm(formTask,todoName, projectName, priority, dueDate) {
     renderSelectProjects(formTask);
