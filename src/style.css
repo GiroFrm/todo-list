@@ -73,6 +73,26 @@ body {
      position: relative;
     }
 
+.overlay {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  z-index: 998;
+}
+
+.btn-primary{
+  color:rgb(0, 0, 0);
+  font-weight: 600;
+  border: none;
+  padding: 0.6rem 0.9rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+
 .btn-addtask {
   background-color: #DC4C3E;
   color:white;
@@ -85,11 +105,19 @@ body {
   outline: 2px solid #218838;
  }
 
- .formTodoContainer {
-   position: fixed;
-   width: 500px;
-   z-index: 99;
+ .btn-formtodo-container {
+  display: flex;
+  gap: 0.5rem;
+ }
 
+ .formTodoContainer {
+   position: absolute;
+   width: 500px;
+   z-index: 999;
+   left: 50%;
+   top: 10%;
+   transform: translate(-50%, -50%);
+   
  }
 
  .formAddTodo,
@@ -98,13 +126,31 @@ body {
  }
 
  .formAddTodo {
-  outline: 1px solid green;
-  max-width: 500px;
- }
+  box-shadow: 20px 20px 80px 5px rgb(169, 164, 164);
+  position: absolute;
+  width: 500px;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
 
- .addTaskform {
-  outline:1px solid red;
- }
+.formtodo-date-priority-container{
+  padding-block: 0.5rem;
+}
+
+.labeldate{
+  margin-left:1rem
+}
+
+.formtodo-footer{
+  display:flex; 
+  justify-content: space-between;
+}
+
+.description-todoform {
+  resize:none;
+  overflow: hidden;
+}
 
  .addEditTaskForm label,
  .formAddProject label {
@@ -136,7 +182,9 @@ body {
     font-weight: bold;
     font-size: 1.2rem;
 }
-
+.projects-list-menu{
+ 
+}
 .project-section {
   
 
@@ -250,7 +298,7 @@ body {
   .addTaskform {
     display: flex;
     flex-direction: column;
-    border: 1px solid yellow
+    
   }
 
   .addEditTaskform{
