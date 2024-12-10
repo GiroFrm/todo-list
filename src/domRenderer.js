@@ -44,13 +44,16 @@ import { createTodoElement } from "./todoElement";
     const projectsList = appController.getProjectsList();
     populateSelectedMenu(projectsList, formTask.querySelector("#projectSelect"))
   }
-
     export function renderSelectEditProjects() {
       const projectsList = appController.getProjectsList();
       populateSelectedMenu(projectsList, document.querySelector("#projectSelectEdit"))
     }
     
-     function populateSelectedMenu(projectsList, selectMenu) {
+    export function renderDefaultTitle(projectName="Home1"){
+     document.querySelector('.projectSectionTitle').innerHTML=projectName
+    }
+    
+    function populateSelectedMenu(projectsList, selectMenu) {
        selectMenu.innerHTML = '';
         projectsList.forEach((project) => {
             const option = document.createElement("option");
