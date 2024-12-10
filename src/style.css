@@ -5,10 +5,15 @@ body {
   display: grid;
   grid-template-columns: 15% 85%;
   height: 100vh;
+  
 }
 
   .flex-line{
    display: flex;
+  }
+
+  .hero {
+   
   }
 
 .sidebar {
@@ -16,9 +21,60 @@ body {
   padding: 1rem;
 }
 
-.sidebar >*{
+/* .sidebar >*{
   padding: 0;
   margin: 0;
+} */
+
+.sidebar {
+  /* width: 250px; */
+  height: 100%;
+  background: #FCFAF8;
+  color: #fff;
+  overflow-y: auto;
+  transition: left 0.3s ease, transform 0.3s ease;
+}
+
+.sidebar.active {
+  transform: translateX(0);
+}
+
+.menu-toggle {
+  display: none;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 999;
+}
+
+@media (max-width: 850px) {
+  body{
+    grid-template-columns: 1fr;
+    
+  }
+  
+  .sidebar {
+    position: fixed;
+    left: -250px;
+    /* Hidden by default */
+    top: 0;
+    width: 250px;
+    transform: translateX(-250px);
+    z-index: 1000;
+  }
+
+  .sidebar.active {
+    transform: translateX(250px);
+  }
+
+  .menu-toggle {
+    display: block;
+  }
 }
 
 .project{
@@ -26,7 +82,6 @@ body {
 }
 
 .project-container  {
-  
   margin-top: 0;
   padding:0;
 }
@@ -118,7 +173,7 @@ body {
  .formTodoContainer {
    position: absolute;
    width: 500px;
-   z-index: 999;
+   z-index: 1001;
    left: 50%;
    top: 10%;
    transform: translate(-50%, -50%);
@@ -191,8 +246,8 @@ body {
  
 }
 .project-section {
-  
-
+ 
+  width: 100%;
    }
 /* Style checkbox*/
 
@@ -277,6 +332,8 @@ body {
     justify-content: space-between;
     border: 1px solid #ccc; 
     padding: 1rem; 
+    max-width: 60rem;
+    
     margin-bottom: 1rem;
   }
 
