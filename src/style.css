@@ -34,7 +34,7 @@ body {
   color: #fff;
   overflow-y: auto;
   transition: left 0.3s ease, transform 0.3s ease;
-  outline: 1px solid red;
+  
 }
 
 .sidebar.active {
@@ -63,7 +63,7 @@ body {
   .hero{
     padding-top:3rem;
   }
-  
+
   .sidebar {
     position: fixed;
     left: -250px;
