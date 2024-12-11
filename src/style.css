@@ -45,6 +45,11 @@ body {
   z-index: 999;
 }
 
+.hero-wrapper{
+  max-width: 800px;
+  margin: auto;
+}
+
 @media (max-width: 850px) {
   body{
     grid-template-columns: 1fr;

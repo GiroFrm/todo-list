@@ -1,97 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo List</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="overlay" class="overlay"></div>
-    
-    <aside class="sidebar">
-        <div>
-            <button class="btn-addtask">Add Task</button>
-            <h2 class="project">Projects</h2>
-            <nav class="project-container">
-                <ul class="list-projects">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Work</a></li>
-                </ul>
-            </nav>
-            <button class="project-btn">Add Project</button>
+    <button id="menu-toggle" class="menu-toggle">☰ Menu</button>
+    <aside id="aside" class="sidebar">
+      <div>
+        <button class="btn-addtask">Add Task</button>
+        <h2 class="project">My Projects</h2>
 
-            <div class="formAddProject" style="display: none">
-                <form id="projectForm">
-                    <input id="projectNameInput" type="text" required>
-                    <button type="submit">Add</button>
-                    <button type="button" id="cancelButton">Cancel</button>
-                </form>
-            </div>
+        <nav class="project-container">
+          <ul class="list-projects">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Work</a></li>
+          </ul>
+        </nav>
+        <button class="project-btn">Add Project</button>
 
+        <div class="formAddProject" style="display: none">
+          <form id="projectForm">
+            <input id="projectNameInput" type="text" required />
+            <button type="submit">Add</button>
+            <button type="button" id="cancelButton">Cancel</button>
+          </form>
         </div>
+      </div>
     </aside>
 
     <main class="hero">
-        <h1 class="projectSectionTitle">Project title</h1>
-        <button class="btn-addtask">Add Task</button>
-        <div class="formTodoContainer"></div>
-      
-        <!-- <div id="editFormTodo" class="formAddTodo1" style="display: none">
-            <form class="addEditTaskform">
-
-                <input type="text" id="titleInputEdit" name="title" placeholder="Task Name" required>
-                <textarea name="description" id="descriptionInputEdit" rows="4" placeholder="Description"></textarea>
-                <label for="options">priority:</label>
-                <select id="optionsEdit" name="priority">
-                    <option value="option1">priority 1</option>
-                    <option value="option2">priority 2</option>
-                    <option value="option3">priority 3</option>
-                </select>
-                <div>
-                    <label for="start">Select a date:</label>
-                    <input type="date" id="startEdit" name="startdate">
-                </div>
-                <div>
-                    <select id="projectSelectEdit" name="project">
-                        <option value="Home1">Home1</option>
-                        <option value="webdevelopment">Web development</option>
-
-                    </select>
-                    <button type="submit">Add</button>
-                    <button type="button" id="cancelButtonTodoEdit">Cancel</button>
-                </div>
-            </form>
-        </div> -->
-
-        <!-- <section class="project-section">
-            <div class="todo-container">
-                <header class="todo-header"> <label class="container"> <span>Todo1</span> <input type="checkbox"
-                            checked="checked"> <span class="checkmark"></span> </label> </header> <button
-                    class="edit">Edit</button> <button class="todo-delete">Delete</button>
-            </div>
-        </section> -->
-
-        <section class="project-section">
-           
-            <!-- <div class="todo-container">
-                <div class="todo-header">
-                    <label class="container">
-                        <p>Todo1</p>
-                        <input type="checkbox" checked="checked">
-                        <span class="checkmark"></span>
-                    </label>
-                </div>
-                <div>
-                <button class="edit">edit</button>
-                <button class="todo-delete">delete</button>
-            </div>
-            </div> -->
-
-        </section>
-        <button class="btn-addtask">Add Task</button>
+      <div class="formTodoContainer"></div>
+      <div class="hero-wrapper">
+      <h1 class="projectSectionTitle">Project title</h1>
+      <section class="project-section"> </section>
+      <button class="btn-addtask">Add Task</button>
+      </div>
     </main>
-</body>
-
+  </body>
 </html>
