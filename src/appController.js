@@ -39,11 +39,6 @@ const appController = (()=> {
         projectsList.push(project);
     }
 
-    function removeProjectFromList() {
-        //will remove project from list and all of its todos?
-        //
-    }
-
     function addNewProject(name) {
          return addProjectToList(name, createProject)   
     }
