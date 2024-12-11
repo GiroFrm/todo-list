@@ -37,29 +37,4 @@ export function createDialog(projectName) {
     document.body.appendChild(dialog);
   }
 
-
-// document.addEventListener('DOMContentLoaded', (event) => { 
-//     const dialog = document.getElementById('dialog');
-//      const openButton = document.getElementById('open-dialog'); 
-//      const closeButton = document.getElementById('close-button');
-//       const confirmButton = document.getElementById('confirm-button'); 
-//       // Open the dialog when the button is clicked 
-//       openButton.addEventListener('click', () => { 
-//         dialog.style.display = 'block'; 
-//     }); 
-//     // Close the dialog when the close button is clicked 
-//     closeButton.addEventListener('click', () => { 
-//         dialog.style.display = 'none'; 
-//     }); 
-//     // Optionally, handle confirm button click 
-//     confirmButton.addEventListener('click', () => { 
-//         console.log('Confirm button clicked'); 
-//         dialog.style.display = 'none'; 
-//     }); // Close the dialog when clicking outside of the dialog content
-//      window.addEventListener('click', (event) => {
-//          if (event.target === dialog) { 
-//             dialog.style.display = 'none'; 
-
-//          }
-//  }); });
   
