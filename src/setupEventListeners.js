@@ -19,7 +19,6 @@ export function setupTodosProject(){
 export function setupAddProjectForm() {
     const btnProjects = document.querySelectorAll(".project-btn");
     btnProjects.forEach(btnProject => { btnProject.addEventListener("click", toggleProjectForm)});
-    // btnProject.addEventListener("click", toggleProjectForm);
     document.getElementById("projectForm").onsubmit = handleProjectFormSubmit;
     document.getElementById("cancelButton").onclick = handleProjectFormCancel;
   }
@@ -59,9 +58,10 @@ function handleProjectClick(event) {
     }
 }
 
-const overlay = document.getElementById('overlay');
+
 
 export function setUpAddTask() {
+    const overlay = document.getElementById('overlay');
  const addTasksbtn = document.querySelectorAll('.btn-addtask');
  addTasksbtn.forEach(addTaskbtn=>{
     addTaskbtn.addEventListener("click",()=>{
@@ -89,6 +89,7 @@ window.addEventListener('click', (event) => {
 });
 
  export function setUpFormTodo() {
+    const overlay = document.getElementById('overlay');
     const formContainer = document.querySelector('.formTodoContainer');
     formContainer.innerHTML='';
     const formSubmitTask = createFormTodoElement();
@@ -98,12 +99,14 @@ window.addEventListener('click', (event) => {
 
     btnCancel.addEventListener("click", ()=>{
         formContainer.removeChild(formSubmitTask);
+        overlay.style.display = 'none';
     });
    
  }
 
  function handleTaskSubmit(event) {
     event.preventDefault(); 
+    const overlay = document.getElementById('overlay');
     const title = event.target.title.value;
     const project = event.target.project.value;
     const description = event.target.description.value;
@@ -114,6 +117,7 @@ window.addEventListener('click', (event) => {
     renderTodos(project); 
     this.style.display='none';
     resetForm(event.target);
+    overlay.style.display = 'none';
  }
 
  export function setUpEditForm(formTask,todoName, projectName, priority, dueDate) {
@@ -122,7 +126,6 @@ window.addEventListener('click', (event) => {
  }
 
  export function setUpClickTrashIcon(name){
-    console.log('click trash' +name)
     createDialog(name);
  }
 
