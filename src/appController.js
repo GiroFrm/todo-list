@@ -39,6 +39,11 @@ const appController = (()=> {
         projectsList.push(project);
     }
 
+    function removeProjectFromList() {
+        //will remove project from list and all of its todos?
+        //
+    }
+
     function addNewProject(name) {
          return addProjectToList(name, createProject)   
     }
@@ -56,9 +61,7 @@ const appController = (()=> {
    }
 
     function addTodoToProject(todo, nameProject) {
-       
         const project = projectsList.find(element => element.name === nameProject);
-
         if (!project) {
             throw new Error(`Project with name ${projectName} does not exist`);
         }
@@ -66,6 +69,15 @@ const appController = (()=> {
         return project;
     }
 
+    function removeProject(nameProject) {
+        const projectIndex = projectsList.findIndex(element => element.name === nameProject);
+        if (projectIndex === -1) {
+            throw new Error(`Project with name ${nameProject} does not exist`);
+        }
+        projectsList.splice(projectIndex, 1);
+        return projectsList;
+    }
+    
     function getTodoByProject(projectName, todoName) { 
         const projects = this.getProjectsList(); 
         const project = projects.find(el => el.name === projectName);
@@ -79,7 +91,8 @@ const appController = (()=> {
         addNewProject,
         getProjectsList,
         addTodoToProject,
-        getTodoByProject
+        getTodoByProject,
+        removeProject
     }
 })();
 
