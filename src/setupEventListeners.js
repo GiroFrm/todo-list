@@ -1,8 +1,9 @@
 import appController from "./appController";
 import createTodo from "./createTodo";
 import { createFormTodoElement } from "./formTodoElement";
-import { renderProjects, renderTodos, renderSelectProjects,  renderSelectEditProjects } from "./domRenderer";
+import { renderProjects, renderTodos, renderSelectProjects,renderTitle ,renderSelectEditProjects } from "./domRenderer";
 import { resetForm } from './utils';
+import { createDialog } from "./dialogWindow";
 
 
 export function setupTodosProject(){
@@ -12,7 +13,7 @@ export function setupTodosProject(){
         projectElement.addEventListener("click", handleProjectClick);
        
     });
-      
+   
 }
 
 export function setupAddProjectForm() {
@@ -43,7 +44,6 @@ export function setupAddProjectForm() {
 
   function createNewProject(name) {
     appController.addNewProject(name);
-    // updateProjectsList
     renderProjects();
 }
 
@@ -58,24 +58,21 @@ function handleProjectClick(event) {
         console.error("Project name not found.");
     }
 }
+
 const overlay = document.getElementById('overlay');
 
 export function setUpAddTask() {
  const addTasksbtn = document.querySelectorAll('.btn-addtask');
- 
  addTasksbtn.forEach(addTaskbtn=>{
     addTaskbtn.addEventListener("click",()=>{
-    
      document.querySelector('.formTodoContainer').innerHTML=''; 
-    let  existingForm  = document.querySelector('.formAddTodo'); 
-        
+    let  existingForm  = document.querySelector('.formAddTodo');     
     if (!existingForm) {
          setUpFormTodo(); 
          existingForm = document.querySelector('.formAddTodo');
          existingForm.style.display = 'none';
          overlay.style.display = 'block';
         }
-       
          existingForm.style.display = existingForm.style.display === 'none' ? 'block' : 'none';
          renderSelectProjects(existingForm);
     
@@ -92,7 +89,6 @@ window.addEventListener('click', (event) => {
 });
 
  export function setUpFormTodo() {
-
     const formContainer = document.querySelector('.formTodoContainer');
     formContainer.innerHTML='';
     const formSubmitTask = createFormTodoElement();
@@ -123,7 +119,18 @@ window.addEventListener('click', (event) => {
  export function setUpEditForm(formTask,todoName, projectName, priority, dueDate) {
     renderSelectProjects(formTask);
     addEditFormEventListeners(formTask, todoName, projectName, priority, dueDate);
- 
+ }
+
+ export function setUpClickTrashIcon(name){
+    console.log('click trash' +name)
+    createDialog(name);
+ }
+
+ export function setUpRemoveProject(name){
+    appController.removeProject(name);
+    renderProjects();
+    renderTodos();
+    renderTitle();
  }
 
  function addEditFormEventListeners(newFormEditTask, todoName, projectName, priority, dueDate) { 
