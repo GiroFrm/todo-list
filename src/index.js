@@ -1,8 +1,9 @@
 import './style.css';
+import './dialogbox.css';
 import createTodo from './createTodo';
 import createProject from './createProject';
 import appController from './appController';
-import {renderProjects, renderTodos} from './domRenderer';
+import {renderProjects, renderTodos, renderTitle} from './domRenderer';
 import { setupTodosProject, setUpFormTodo, setupEventListeners,  setupAddProjectForm, setUpAddTask } from './setupEventListeners';
 import { navBar } from './navMenu';
 
@@ -10,12 +11,13 @@ import { navBar } from './navMenu';
 
 
  window.onload = () => { // conditionally runs block on whether window is loaded - event listeners don't run until elements are on the page. (avoid timing conflicts).
-    renderProjects();
-    setupAddProjectForm();
+     renderProjects();
+     setupAddProjectForm();
      renderTodos();
      setupTodosProject();
      setUpAddTask();
      navBar();
+     renderTitle();
 }
 
 
