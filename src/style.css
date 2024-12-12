@@ -3,14 +3,18 @@ body {
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: 15% 85%;
+  grid-template-columns: minmax(19%,125px) 75%;
   height: 100vh;
-  outline: 1px solid green;
+  
 }
 
   .flex-line{
    display: flex;
   }
+
+.hero {
+
+}
 
 .sidebar {
   background-color: #FCFAF8; 
@@ -19,12 +23,15 @@ body {
 }
 
 .sidebar {
-  /* width: 250px; */
+  min-width: 140px;
+  padding: 1rem;
+  padding-top: 1.5rem;
   height: 100vh;
   background: #FCFAF8;
   color: #fff;
   overflow-y: auto;
   transition: left 0.3s ease, transform 0.3s ease;
+  
   
 }
 
@@ -50,12 +57,10 @@ body {
   margin: auto;
 }
 
-@media (max-width: 850px) {
+@media (max-width: 910px) {
   body{
     grid-template-columns: 1fr;
-    
-  }
-  
+  } 
   .hero{
     padding-top:3rem;
   }
@@ -69,7 +74,6 @@ body {
     transform: translateX(-250px);
     z-index: 1000;
    
-    
   }
 
 
@@ -188,7 +192,7 @@ body {
  .formTodoContainer {
    position: absolute;
    width: 500px;
-   z-index: 1001;
+   z-index: 1000;
    left: 50%;
    top: 10%;
    transform: translate(-50%, -50%);
@@ -278,7 +282,7 @@ body {
     padding-left: 35px;
     margin-bottom: 2px;
     cursor: pointer;
-    font-size: 22px;
+    font-size: 19px;
     padding-block:0;
     margin-block: 0;
     -webkit-user-select: none;
@@ -308,12 +312,14 @@ body {
     height: 25px;
     width: 25px;
     border-radius: 50%;
-    background-color: #eee;
+    background-color: #fff;
+    border:0.5px solid #ccc;
   }
   
   /* On mouse-over, add a grey background color */
   .container:hover input ~ .checkmark {
-    background-color: #ccc;
+    background-color: #e6c0c0;
+    border: 1px;
   }
   
   /* When the checkbox is checked, add a blue background */
@@ -353,7 +359,6 @@ body {
     border: 1px solid #ccc; 
     padding: 1rem; 
     max-width: 60rem;
-    
     margin-bottom: 1rem;
   }
 
@@ -379,8 +384,7 @@ body {
   
   .addTaskform {
     display: flex;
-    flex-direction: column;
-    
+    flex-direction: column;  
   }
 
   .addEditTaskform{
@@ -398,12 +402,12 @@ body {
       cursor: pointer;
     }
 
-        .todo-delete {
-          background-color: #DC4C3E;
+   .todo-delete {
+      background-color: #DC4C3E;
          
-        }
+    }
     
-        .edit:focus,
-        .todo-delete:focus {
-          outline: 2px solid #3498DB;
+    .edit:focus,
+    .todo-delete:focus {
+    outline: 2px solid #3498DB;
         }
