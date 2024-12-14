@@ -58,8 +58,6 @@ function handleProjectClick(event) {
     }
 }
 
-
-
 export function setUpAddTask() {
     const overlay = document.getElementById('overlay');
  const addTasksbtn = document.querySelectorAll('.btn-addtask');
@@ -149,6 +147,7 @@ window.addEventListener('click', (event) => {
 }
 
 function handleEditFormSubmit(event, todoName) { 
+    const formTodocontainer = document.querySelector('.formTodoContainer');
     const title = event.target.title.value; 
     const project = event.target.project.value; 
     const description = event.target.description.value; 
@@ -157,8 +156,10 @@ function handleEditFormSubmit(event, todoName) {
 
     const todoElement = appController.getTodoByProject(project, todoName);
     todoElement.editTodo(title, description, priority, startDate); 
-
+    formTodocontainer.innerHTML='';
     event.target.style.display  = 'none';
+   
     resetForm(event.target);
+
     renderTodos(project);
  }
