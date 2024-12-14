@@ -109,6 +109,7 @@ window.addEventListener('click', (event) => {
     const description = event.target.description.value;
     const priority = event.target.priority.value;
     const dueDate = event.target.startdate.value;
+
     const todo = createTodo(title, description,priority, dueDate);
     appController.addTodoToProject(todo, project);
     renderTodos(project); 
@@ -141,20 +142,22 @@ window.addEventListener('click', (event) => {
     newFormEditTask.querySelector('#start').value = dueDate; 
     newFormEditTask.addEventListener("submit", (event) => {  
         event.preventDefault(); 
-        handleEditFormSubmit(event, todoName); 
+        handleEditFormSubmit(event, todoName, projectName); 
     }); 
 }
 
-function handleEditFormSubmit(event, todoName) { 
+function handleEditFormSubmit(event, todoName, projectName) { 
     const formTodocontainer = document.querySelector('.formTodoContainer');
     const title = event.target.title.value; 
     const project = event.target.project.value; 
     const description = event.target.description.value; 
     const priority = event.target.priority.value; 
-    const startDate = event.target.startdate.value; 
-
-    const todoElement = appController.getTodoByProject(project, todoName);
-    todoElement.editTodo(title, description, priority, startDate); 
+    const dueDate = event.target.startdate.value; 
+    
+    const todoElement = appController.getTodoByProject(projectName, todoName);
+    appController.removeTodoFromProject(projectName, todoElement);
+    const todo = createTodo(title, description,priority, dueDate);
+    appController.addTodoToProject(todo, project);
     formTodocontainer.innerHTML='';
     event.target.style.display  = 'none';
    
