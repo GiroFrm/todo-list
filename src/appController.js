@@ -9,13 +9,20 @@ const appController = (()=> {
     let projectsList = [];
 
     let defaultProject = createProject("Home1");
-    const todo0 = createTodo('cleaning kitchen');
-        defaultProject.addTodo(todo0); 
-        const todoBread = createTodo("buy bread")
-        defaultProject.addTodo( todoBread); 
-        const todo2 = createTodo('change sheets') 
-        defaultProject.addTodo(todo2); 
-         projectsList.push(defaultProject);
+
+    const todo0 = createTodo("cleaning kitchen");
+    todo0.dueDate = "2024-12-14";
+    defaultProject.addTodo(todo0);
+
+    const todoBread = createTodo("buy bread");
+    todoBread.dueDate = "2024-12-18";
+    defaultProject.addTodo(todoBread);
+
+    const todo2 = createTodo("change sheets");
+    todo2.dueDate = "2024-12-22";
+    defaultProject.addTodo(todo2);
+
+    projectsList.push(defaultProject);
 
     let project2 =createProject("webdevelopment");
     const todop = createTodo('test case')
@@ -72,6 +79,14 @@ const appController = (()=> {
         projectsList.splice(projectIndex, 1);
         return projectsList;
     }
+
+    function removeTodoFromProject(projectName, todo){
+        const project = projectsList.find(element => element.name === projectName);
+        if (!project) {
+            throw new Error(`Project with name ${projectName} does not exist`);
+        }
+        project.removeTodo(todo);
+    }
     
     function getTodoByProject(projectName, todoName) { 
         const projects = this.getProjectsList(); 
@@ -87,7 +102,8 @@ const appController = (()=> {
         getProjectsList,
         addTodoToProject,
         getTodoByProject,
-        removeProject
+        removeProject,
+        removeTodoFromProject
     }
 })();
 
