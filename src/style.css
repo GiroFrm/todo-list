@@ -7,14 +7,9 @@ body {
   height: 100vh;
   
 }
-
   .flex-line{
    display: flex;
   }
-
-.hero {
-
-}
 
 .sidebar {
   background-color: #FCFAF8; 
