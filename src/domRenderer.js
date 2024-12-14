@@ -31,7 +31,7 @@ import icontrash from './trash-50.png';
 
   }
 
-  export function renderTodos(projectName ) {
+  export function renderTodos(projectName) {
     const projectSection = document.querySelector(".project-section");
     projectSection.innerHTML = " ";
     if(projectName== null){
