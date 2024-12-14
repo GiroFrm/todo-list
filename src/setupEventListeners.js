@@ -162,5 +162,5 @@ function handleEditFormSubmit(event, todoName, projectName) {
     event.target.style.display  = 'none';
    
     resetForm(event.target);
-    renderTodos(project);
+    renderTodos(projectName);
  }
