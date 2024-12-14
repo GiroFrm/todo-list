@@ -1,5 +1,6 @@
 //Create a form to add new Todo
 export function createFormTodoElement() {
+    const formContainerDiv = document.querySelector('.formTodoContainer');
     const formContainer = document.createElement('div');
     formContainer.classList.add('formAddTodo');
     const formTodo = document.createElement('form');
@@ -31,7 +32,7 @@ export function createFormTodoElement() {
     selectMenu.id= 'options';
     selectMenu.name = 'priority';
     labelOptions.appendChild(selectMenu)
-    // optionMenuContainer.appendChild(selectMenu);
+   
     formTodo.appendChild(optionMenuContainer);
     const priority1 = document.createElement('option');
     priority1.value = 'option1';
@@ -85,11 +86,15 @@ export function createFormTodoElement() {
     buttonCancel.innerHTML = 'Cancel';
     buttonCancel.addEventListener('click', ()=>{
     formContainer.style.display='none';
+    formContainerDiv.innerHTML=''
    })
    const buttonAdd = document.createElement('button');
    buttonAdd.classList.add('formSubmitBtn','btn-primary', 'btn-addtask');
    buttonAdd.type='submit';
    buttonAdd.innerHTML = 'Add';
+   buttonAdd.addEventListener('click', ()=>{
+     
+   })
     containerButtons.classList.add('btn-formtodo-container');
     containerButtons.appendChild(buttonCancel);
     containerButtons.appendChild(buttonAdd);

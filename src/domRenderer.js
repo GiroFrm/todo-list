@@ -7,8 +7,6 @@ import { setUpClickTrashIcon } from "./setupEventListeners";
 import icontrash from './trash-50.png';
 
   export function renderProjects() {
-        const projectsContainer =  document.querySelector('.project-container');
-        
        const ul = document.querySelector('.list-projects'); 
        ul.innerHTML= '';
         const listAllProjects = appController.getProjectsList();
