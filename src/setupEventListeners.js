@@ -96,7 +96,6 @@ window.addEventListener('click', (event) => {
     const btnCancel =  formSubmitTask.querySelector('#buttonCancel1');
 
     btnCancel.addEventListener("click", ()=>{
-        formContainer.removeChild(formSubmitTask);
         overlay.style.display = 'none';
     });
    
@@ -160,6 +159,5 @@ function handleEditFormSubmit(event, todoName) {
     event.target.style.display  = 'none';
    
     resetForm(event.target);
-
     renderTodos(project);
  }
