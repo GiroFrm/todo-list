@@ -1,8 +1,8 @@
 
 import { parseISO, format } from 'date-fns';
-import { setUpEditForm } from './setupEventListeners';
-import { renderTodos, renderSelectProjects, renderSelectProjects1 } from './domRenderer';
-import { createFormTodoElement } from './formTodoElement';
+import { setUpEditForm } from '../../eventListeners/setupEventListeners';
+import { renderTodos} from '../../domRenderer';
+import { createFormTodoElement } from '../formTodoElements/formTodoElement';
 
 export function createTodoElement(todo, project) {
     const todoContainer = document.createElement('div');

@@ -1,4 +1,6 @@
-import { setUpRemoveProject } from "./setupEventListeners";
+import './dialogbox.css';
+
+import { setUpRemoveProject } from "../../eventListeners/setupEventListeners";
 // Function to create and append the dialog window
 export function createDialog(projectName) {
     // Create the dialog container

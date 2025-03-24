@@ -1,13 +1,14 @@
 
 
-import createProject from "./createProject"
-import createTodo from "./createTodo";
-
-
-const appController = (()=> {
+import createProject from "./model/createProject"
+import createTodo from "./model/createTodo";
+import{addProject, removeProjectFromList} from './model/projectManager';
+import {  addTodoToProjectManager as addTodoToProjectHelper, removeTodoFromProjectManager as removeTodoHelper, getTodoByProjectManager as getTodoHelper } from "./model/todoManager";
+const appController = (() => {
 
     let projectsList = [];
 
+function initializeDefaultData(){
     let defaultProject = createProject("Home1");
 
     const todo0 = createTodo("cleaning kitchen");
@@ -24,79 +25,60 @@ const appController = (()=> {
 
     projectsList.push(defaultProject);
 
-    let project2 =createProject("webdevelopment");
+    let project2 = createProject("webdevelopment");
     const todop = createTodo('test case')
     const todop1 = createTodo('meting Call')
     const todop2 = createTodo('Git Hub')
-        project2.addTodo(todop); 
-        project2.addTodo(todop1); 
-        project2.addTodo(todop2); 
-     projectsList.push(project2);    
+    project2.addTodo(todop);
+    project2.addTodo(todop1);
+    project2.addTodo(todop2);
+    projectsList.push(project2);
+}
 
-    function addProjectToList(name, createProject) {
-        if (!name) {
-            throw new Error('Project name is required');
-        }
-    
-        const project = createProject(name);
-        if (!project) {
-            throw new Error('Failed to create project');
-        }
-    
-        projectsList.push(project);
+    function findProjectByName(name) {
+        return projectsList.find(project => project.name === name) || null;
+      }
+
+    function addProjectToList(name) {
+        addProject(name, createProject, projectsList);
     }
 
     function addNewProject(name) {
-         return addProjectToList(name, createProject)   
+        return addProjectToList(name)
     }
-    
-   function getProjectsList() {
-    return projectsList.map(project => {
-        return {
-            name: project.name,
-            addTodo: project.addTodo,
-            removeTodo: project.removeTodo,
-            getTodos: project.getTodos,
-           
-        };
-    });
-   }
 
-    function addTodoToProject(todo, nameProject) {
-        const project = projectsList.find(element => element.name === nameProject);
-        if (!project) {
-            throw new Error(`Project with name ${projectName} does not exist`);
-        }
-            project.addTodo(todo)
-        return project;
+    function getProjectsList() {
+        return projectsList.map(project => {
+            return {
+                name: project.name,
+                addTodo: project.addTodo,
+                removeTodo: project.removeTodo,
+                getTodos: project.getTodos,
+            }
+        });
     }
 
     function removeProject(nameProject) {
-        const projectIndex = projectsList.findIndex(element => element.name === nameProject);
-        if (projectIndex === -1) {
-            throw new Error(`Project with name ${nameProject} does not exist`);
-        }
-        projectsList.splice(projectIndex, 1);
-        return projectsList;
+       removeProjectFromList(nameProject, projectsList);
+     
     }
 
-    function removeTodoFromProject(projectName, todo){
-        const project = projectsList.find(element => element.name === projectName);
-        if (!project) {
-            throw new Error(`Project with name ${projectName} does not exist`);
-        }
-        project.removeTodo(todo);
+    function addTodoToProject(todo, nameProject) {
+        const project = findProjectByName(nameProject);
+        return addTodoToProjectHelper(todo, project)
     }
-    
-    function getTodoByProject(projectName, todoName) { 
-        const projects = this.getProjectsList(); 
-        const project = projects.find(el => el.name === projectName);
-         if (project) {
-             return project.getTodos().find(todo => todo.title === todoName); 
-            } 
-             return null; 
-            }
 
+    function removeTodoFromProject(projectName, todo) {
+        const project = findProjectByName(projectName);
+        removeTodoHelper(project, todo)
+    }
+
+    function getTodoByProject(projectName, todoName) {
+        const project = findProjectByName(projectName);
+       return getTodoHelper(project, todoName);
+    }
+
+    initializeDefaultData();
     return {
         addNewProject,
         getProjectsList,

@@ -1,0 +1,95 @@
+
+
+.formTodoContainer {
+    position: absolute;
+    width: 500px;
+    z-index: 1000;
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%, -50%);
+ 
+  }
+
+  .formAddTodo {
+    border: 1px solid grey;
+    margin-bottom: 2rem;  
+    box-shadow: 20px 20px 80px 5px rgb(169, 164, 164);
+    position: absolute;
+    width: 500px;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    
+  }
+
+  .formAddTodo,
+ .formAddProject {
+   margin-top: 1rem;
+ }
+
+  .addTaskform {
+    display: flex;
+    flex-direction: column;  
+  }
+
+  .addEditTaskForm label,
+  .formAddProject label {
+    display: block;
+    margin: 0.5rem 0 0.2rem 0;
+  }
+
+  .addEditTaskForm input,
+  .formAddProject input,
+  .addEditTaskForm textarea,
+ .addEditTaskForm select {
+   width: 100%;
+   padding: 0.5rem;
+   margin-bottom: 1rem;
+ }
+
+ .addEditTaskForm button {
+   padding: 0.5rem 1rem;
+   margin-right: 0.5rem;
+ }
+
+ .formtodo-date-priority-container{
+    padding-block: 0.5rem;
+  }
+
+  .labeldate{
+    margin-left:1rem
+  }
+
+  .formtodo-footer{
+    display:flex; 
+    justify-content: space-between;
+  }
+  .projects-list-menu{
+ 
+  }
+
+  .btn-primary{
+    color:rgb(0, 0, 0);
+    font-weight: 600;
+    border: none;
+    padding: 0.6rem 0.9rem;
+    border-radius: 0.3rem;
+    cursor: pointer;
+  }
+
+  .btn-addtask {
+    background-color: #DC4C3E;
+    color:white;
+    border: none;
+    padding: 0.6rem 0.9rem;
+    cursor: pointer;
+  }
+  
+  .btn-addtask:focus { 
+    outline: 2px solid #218838;
+   }
+
+   .btn-formtodo-container {
+    display: flex;
+    gap: 0.5rem;
+   }

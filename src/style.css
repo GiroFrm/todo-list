@@ -1,3 +1,8 @@
+
+@import "./components/formTodoElements/formTodoElement.css";
+@import "./components/navMenu/navMenu.css";
+@import "./components/todoElement/todoElement.css";
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -11,41 +16,6 @@ body {
    display: flex;
   }
 
-.sidebar {
-  background-color: #FCFAF8; 
-  padding: 1rem;
-  padding-top: 1.5rem;
-}
-
-.sidebar {
-  min-width: 140px;
-  padding: 1rem;
-  padding-top: 1.5rem;
-  height: 100vh;
-  background: #FCFAF8;
-  color: #fff;
-  overflow-y: auto;
-  transition: left 0.3s ease, transform 0.3s ease;
-  
-  
-}
-
-.sidebar.active {
-  transform: translateX(0);
-}
-
-.menu-toggle {
-  display: none;
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  background: #333;
-  color: #fff;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  z-index: 999;
-}
 
 .hero-wrapper{
   max-width: 800px;
@@ -167,58 +137,8 @@ body {
   cursor: pointer;
 }
 
-.btn-addtask {
-  background-color: #DC4C3E;
-  color:white;
-  border: none;
-  padding: 0.6rem 0.9rem;
-  cursor: pointer;
-}
-
-.btn-addtask:focus { 
-  outline: 2px solid #218838;
- }
-
- .btn-formtodo-container {
-  display: flex;
-  gap: 0.5rem;
- }
-
- .formTodoContainer {
-   position: absolute;
-   width: 500px;
-   z-index: 1000;
-   left: 50%;
-   top: 10%;
-   transform: translate(-50%, -50%);
-   
- }
-
- .formAddTodo,
- .formAddProject {
-   margin-top: 1rem;
- }
-
- .formAddTodo {
-  box-shadow: 20px 20px 80px 5px rgb(169, 164, 164);
-  position: absolute;
-  width: 500px;
-  background-color: white;
-  padding: 1rem;
-  border-radius: 0.5rem;
-}
-
-.formtodo-date-priority-container{
-  padding-block: 0.5rem;
-}
-
 .labeldate{
   margin-left:1rem
-}
-
-.formtodo-footer{
-  display:flex; 
-  justify-content: space-between;
 }
 
 .description-todoform {
@@ -232,16 +152,13 @@ body {
    margin: 0.5rem 0 0.2rem 0;
  }
 
- .addEditTaskForm input,
- .formAddProject input,
- .addEditTaskForm textarea,
- .addEditTaskForm select {
+
+ .formAddProject input {
    width: 100%;
    padding: 0.5rem;
    margin-bottom: 1rem;
  }
 
- .addEditTaskForm button,
  .formAddProject button {
    padding: 0.5rem 1rem;
    margin-right: 0.5rem;
@@ -268,141 +185,6 @@ body {
   align-items: center;
   justify-content: space-between;
 }
-/* Style checkbox*/
 
-/* The container */
-.container {
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 2px;
-    cursor: pointer;
-    font-size: 19px;
-    padding-block:0;
-    margin-block: 0;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-  
-  .container >*{
-    padding: 0;
-    margin: 0;
-  }
-  /* Hide the browser's default checkbox */
-  .container input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-  }
-  
-  /* Create a custom checkbox */
-  .checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    border-radius: 50%;
-    background-color: #fff;
-    border:0.5px solid #ccc;
-  }
-  
-  /* On mouse-over, add a grey background color */
-  .container:hover input ~ .checkmark {
-    background-color: #e6c0c0;
-    border: 1px;
-  }
-  
-  /* When the checkbox is checked, add a blue background */
-  .container input:checked ~ .checkmark {
-    background-color: #2196F3;
-  }
-  
-  /* Create the checkmark/indicator (hidden when not checked) */
-  .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-  
-  /* Show the checkmark when checked */
-  .container input:checked ~ .checkmark:after {
-    display: block;
-  }
-  
-  /* Style the checkmark/indicator */
-  .container .checkmark:after {
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
 
-  .todo-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border: 1px solid #ccc; 
-    padding: 1rem; 
-    max-width: 60rem;
-    margin-bottom: 1rem;
-  }
-
-  .todo-delete {
-    margin-left: 0.2rem;
-  }
-
-  .todo-header {
-    padding:0;
-    margin: 0;
-  }
-
-  /* Form addNew Task*/
-
-  .formAddTodo {
-    border: 1px solid grey;
-    margin-bottom: 2rem;   
-  }
-  
-  .date-todo {
-    font-size: 0.8rem;
-  }
-  
-  .addTaskform {
-    display: flex;
-    flex-direction: column;  
-  }
-
-  .addEditTaskform{
-    display: flex;
-    flex-direction: column;
-  }
-
-    .edit,
-    .todo-delete {
-      margin: 0.5rem;
-      padding: 0.5rem 1rem;
-      background-color: #ffc107;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-
-   .todo-delete {
-      background-color: #DC4C3E;
-         
-    }
-    
-    .edit:focus,
-    .todo-delete:focus {
-    outline: 2px solid #3498DB;
-        }
+   

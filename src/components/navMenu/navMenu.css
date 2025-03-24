@@ -1,0 +1,37 @@
+
+.sidebar {
+    background-color: #FCFAF8; 
+    padding: 1rem;
+    padding-top: 1.5rem;
+   
+  }
+  
+  .sidebar {
+    min-width: 140px;
+    padding: 1rem;
+    padding-top: 1.5rem;
+    height: 100vh;
+    background: #FCFAF8;
+    color: #fff;
+    overflow-y: auto;
+    transition: left 0.3s ease, transform 0.3s ease;
+    
+    
+  }
+  
+  .sidebar.active {
+    transform: translateX(0);
+  }
+
+  .menu-toggle {
+    display: none;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 999;
+  }
