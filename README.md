@@ -2,7 +2,7 @@
 
 This is a SPA (Single Page Application) built in WebPack
 
-![Homepage Screenshot](src/images/screen.png)
+![Homepage Screenshot](src/home.png)
 
 ## How to Access Weather App
 
