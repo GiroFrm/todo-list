@@ -75,8 +75,8 @@ function setUpRemoveProject(name) {
 window.addEventListener('click', (event) => {
    if (event.target == overlay) {
       overlay.style.display = 'none';
-      toggleForm(formTodoContainer);
-     // formTodoContainer.innerHTML = ''
+      //toggleForm(formTodoContainer);
+      formTodoContainer.innerHTML = ''
    }
 });
 

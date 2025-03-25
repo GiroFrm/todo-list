@@ -1,14 +1,12 @@
 
 
 .formTodoContainer {
-    position: absolute;
-    width: 500px;
+    position: relative;
+    width: 600px;
     z-index: 1000;
     left: 50%;
     top: 10%;
     transform: translate(-50%, -50%);
-    outline: 1px solid red;
- 
   }
 
   .formAddTodo {
@@ -17,13 +15,14 @@
     position: absolute;
     width: 500px;
     background-color: white;
-    padding: 1rem;
+    padding: 0.5rem;
     border-radius: 0.5rem;
     height: fit-content;
   }
+
   @media(max-width: 600px) {
     .formTodoContainer {
-      width: 300px;
+      width: 350px;
     }
     .formAddTodo {
       width: 300px;
@@ -48,6 +47,8 @@
   .addTaskform {
     display: flex;
     flex-direction: column;  
+    width: 100%;
+   
   }
 
   .addEditTaskForm label,
