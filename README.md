@@ -1,30 +1,27 @@
-# Webpack Template Repository
+# Todo App
 
-This repository serves as a template for setting up a basic Webpack configuration.
+This is a SPA (Single Page Application) built in WebPack
 
-## Getting Started
+![Homepage Screenshot](src/images/screen.png)
 
-### Prerequisites
+## How to Access Weather App
 
-- Node.js and npm installed on your machine.
+E-commerce is hosted on **GitHub PAges**. You can access it [here](https://girofrm.github.io/todo-list/).
 
-### Installation
+## Features
+- **Add New Project**: A new project will be shown on the navBar at the left
+- **Add New Todo**: A new Todo will be assigned to a specific project
+- **toggle off completed Todo**: A Todo completed can be ticked off and deactivated
+- **Edit Todo**: It allows to edit Todo fields(Name, Data, Description, priority, project)
+- **Responsive Design**: Ensures a responsive design for all screen sizes.
+- **Accessibility**: Follows web accessibility guidelines to ensure a usable experience for all users.
 
-1. Clone the repository:
-   ```bash
-   git clone <repository-url>
-   cd your-cloned-repository
+## Tech Stack
 
-   2. Install the dependencies
+- **Webpack**:
+- **JavaScript**
+- **HTML & CSS**
 
-   npm install
+## Deployment
 
-Usage
-To build the project and generate the dist folder, run:
-npm run build
-
-Configuration
-The Webpack configuration is located in webpack.config.js. You can customize it according to your project needs.
-
-Contributing
-Feel free to open issues or submit pull requests if you have suggestions or improvements.
+Deployed on **Git Pages** for fast and reliable hosting.
