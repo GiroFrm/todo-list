@@ -7,19 +7,37 @@
     left: 50%;
     top: 10%;
     transform: translate(-50%, -50%);
+    outline: 1px solid red;
  
   }
 
   .formAddTodo {
-    border: 1px solid grey;
-    margin-bottom: 2rem;  
+    border: 1px solid grey; 
     box-shadow: 20px 20px 80px 5px rgb(169, 164, 164);
     position: absolute;
     width: 500px;
     background-color: white;
     padding: 1rem;
     border-radius: 0.5rem;
+    height: fit-content;
+  }
+  @media(max-width: 600px) {
+    .formTodoContainer {
+      width: 300px;
+    }
+    .formAddTodo {
+      width: 300px;
+    }
+  }
+
+  .formAddTodo input {
+    padding-block: 0.5rem;
+    margin-bottom: 3px;
     
+  }
+
+  #options {
+   padding-block: 0.4rem;
   }
 
   .formAddTodo,
@@ -54,20 +72,21 @@
 
  .formtodo-date-priority-container{
     padding-block: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    gap: 0.5rem;
   }
 
   .labeldate{
-    margin-left:1rem
+    
   }
 
   .formtodo-footer{
     display:flex; 
     justify-content: space-between;
   }
-  .projects-list-menu{
  
-  }
-
   .btn-primary{
     color:rgb(0, 0, 0);
     font-weight: 600;

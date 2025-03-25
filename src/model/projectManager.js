@@ -1,7 +1,4 @@
 
-
-
-
   let projectsList=[];
   
     export function addProject(name, createProject,  projectsList) {

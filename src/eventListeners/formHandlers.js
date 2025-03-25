@@ -1,5 +1,5 @@
 
-import { renderProjects, renderTodos } from '../domRenderer';
+import { renderProjects, renderTitle, renderTodos } from '../domRenderer';
 import appController from '../appController';
 import { resetForm } from '../utils';
 import createTodo from '../model/createTodo';
@@ -38,8 +38,9 @@ export function handleTaskSubmit(event) {
     const todo = createTodo(title, description, priority, dueDate);
     appController.addTodoToProject(todo, project);
     renderTodos(project);
-    this.style.display = 'none';
+    renderTitle(project);
     resetForm(event.target);
+    this.style.display = 'none';
     overlay.style.display = 'none';
 }
 

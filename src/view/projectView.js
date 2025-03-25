@@ -6,8 +6,7 @@ import icontrash from '../trash-50.png';
        const ul = document.querySelector('.list-projects'); 
        ul.innerHTML= '';
         const listAllProjects = appController.getProjectsList();
-          listAllProjects.forEach(element => {
-           
+          listAllProjects.forEach(element => { 
             const li = document.createElement('li');
                 li.classList.add('project-title-container');
             const newProject = document.createElement('a');

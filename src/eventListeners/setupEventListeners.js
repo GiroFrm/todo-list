@@ -3,7 +3,7 @@ import { createFormTodoElement } from "../components/formTodoElements/formTodoEl
 import { renderProjects, renderTodos, renderSelectProjects, renderTitle} from "../domRenderer";
 import { createDialog } from "../components/dialogWindow/dialogWindow";
 import { handleProjectFormSubmit, handleProjectFormCancel, handleTaskSubmit, addEditFormEventListeners } from "./formHandlers";
-
+import { toggleForm } from '../helpers/uiHelpers.js'
 
 const formTodoContainer = document.querySelector('.formTodoContainer');
 const overlay = document.getElementById('overlay');
@@ -11,7 +11,9 @@ const projectForm = document.getElementById("projectForm");
 const cancelButton = document.getElementById("cancelButton");
 const addTasksbtn = document.querySelectorAll('.btn-addtask');
 
-export function setupTodosProject() {
+
+
+ function setupTodosProject() {
    const projectElements = document.querySelectorAll(".project1");
    projectElements.forEach(projectElement => {
       projectElement.removeEventListener("click", handleProjectClick); // removes existing so no double ups.
@@ -31,50 +33,54 @@ function handleProjectClick(event) {
    }
 }
 
-export function setupAddProjectForm() {
+ function setupAddProjectForm() {
    const btnProjects = document.querySelectorAll(".project-btn");
-   btnProjects.forEach(btnProject => { btnProject.addEventListener("click", toggleProjectForm) });
+   const container = document.querySelector(".formAddProject");
+   btnProjects.forEach(btnProject => { 
+      btnProject.addEventListener("click", ()=>{
+      toggleForm(container);
+      }) 
+   }
+);
    projectForm.onsubmit = handleProjectFormSubmit;
    cancelButton.onclick = handleProjectFormCancel;
 }
 
+function setUpRemoveProject(name) {
+   appController.removeProject(name);
+   renderProjects();
+   renderTodos();
+   renderTitle();
+}
 
-export function setUpAddTask() {
+ function setUpAddTask() {
    addTasksbtn.forEach(addTaskbtn => {
       addTaskbtn.addEventListener("click", () => {
          formTodoContainer.innerHTML = '';
-         let existingForm = document.querySelector('.formAddTodo');
+          let existingForm = document.querySelector('.formAddTodo');
          if (!existingForm) {
             setUpFormTodo();
             existingForm = document.querySelector('.formAddTodo');
             existingForm.style.display = 'none';
             overlay.style.display = 'block';
          }
-         toggleVisibility(existingForm)
+         toggleForm(existingForm);
          renderSelectProjects(existingForm);
 
       })
    })
 }
 
-function toggleProjectForm() {
-   const containerAddProject = document.querySelector(".formAddProject");
-   containerAddProject.style.display = containerAddProject.style.display === "none" ? "block" : "none";
-}
-
-function toggleVisibility(element) {
-   element.style.display = element.style.display === "none" ? "block" : "none";
-}
 
 window.addEventListener('click', (event) => {
    if (event.target == overlay) {
       overlay.style.display = 'none';
-      formTodoContainer.innerHTML = ''
+      toggleForm(formTodoContainer);
+     // formTodoContainer.innerHTML = ''
    }
 });
 
-
-export function setUpFormTodo() {
+ function setUpFormTodo() {
    formTodoContainer.innerHTML = '';
    const formSubmitTask = createFormTodoElement();
    formTodoContainer.appendChild(formSubmitTask);
@@ -86,19 +92,24 @@ export function setUpFormTodo() {
 
 }
 
-export function setUpEditForm(formTask, todoName, projectName, priority, dueDate) {
+ function setUpEditForm(formTask, todoName, projectName, priority, dueDate) {
    renderSelectProjects(formTask);
    addEditFormEventListeners(formTask, todoName, projectName, priority, dueDate);
 }
 
-export function setUpClickTrashIcon(name) {
+function setUpClickTrashIcon(name) {
    createDialog(name);
 }
 
-export function setUpRemoveProject(name) {
-   appController.removeProject(name);
-   renderProjects();
-   renderTodos();
-   renderTitle();
-}
 
+
+
+export{
+   setupTodosProject,
+   setupAddProjectForm, 
+   setUpAddTask, 
+   setUpFormTodo, 
+   setUpEditForm,
+   setUpClickTrashIcon,
+   setUpRemoveProject
+}
