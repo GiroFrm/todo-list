@@ -1,12 +1,13 @@
 
 
 .formTodoContainer {
-    position: relative;
+    position: absolute;
     width: 600px;
     z-index: 1000;
     left: 50%;
     top: 10%;
     transform: translate(-50%, -50%);
+   
   }
 
   .formAddTodo {
